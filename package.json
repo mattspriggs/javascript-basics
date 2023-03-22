@@ -14,5 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "eslint-config-wesbos": "^3.2.3"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }
