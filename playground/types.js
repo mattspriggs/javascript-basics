@@ -1,3 +1,5 @@
+/*  STRINGS */
+
 //Can use '', "" or `` for strings
 
 const name = 'Matt';
@@ -27,4 +29,16 @@ const html = `
 	<h2>Title</h2>
 </div>`; //Backticks make inserting HTML much easier as it preserves the return and tabbing
 
-console.log(html);
+const hello = 'Hello my name is ' + name + '. Nice to meet you.'; //concatenation with interpolation
+const hello2 = `Hello my name is ${name}. Nice to meet you.`; //interpolation only
+
+const html2 = `
+<div>
+	<h2>${name}</h2>
+	<p>${hello2}</p>
+</div>`;
+
+document.body.innerHTML = html2;
+console.log(html2);
+
+/*  NUMBERS */
