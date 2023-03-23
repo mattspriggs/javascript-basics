@@ -75,3 +75,17 @@ console.log(dog); //Yields undefined - similarly if you try to access a value in
 // that matches the keys in the object it will return undefined - the variable also must be declared in order so the
 // console.log above remains undefined with the value set after it
 dog = 'Amber';
+
+let somethingUndefined; //Not defined so it will be undefined
+const somethingNull = null; //To have a null value it must be actively set to null
+
+const cher = {
+  first: 'Cher',
+};
+
+const teller = {
+  first: 'Raymond',
+  last: 'Teller',
+};
+teller.first = 'Teller';
+teller.last = null;
