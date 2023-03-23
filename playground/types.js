@@ -43,12 +43,12 @@
 
 /*  NUMBERS */
 
-const age = 100;
-const name = 'Matt';
-//Using the typeof command in the console will tell you what kind of variable it is
-
-const smarties = 20;
-const kids = 3;
-const eachKidGets = Math.floor(smarties / kids);
-const dadGets = smarties % kids;
-console.log(`Each kid gets ${eachKidGets} and Dad gets ${dadGets}`);
+// const age = 100;
+// const name = 'Matt';
+// //Using the typeof command in the console will tell you what kind of variable it is
+//
+// const smarties = 20;
+// const kids = 3;
+// const eachKidGets = Math.floor(smarties / kids);
+// const dadGets = smarties % kids;
+// console.log(`Each kid gets ${eachKidGets} and Dad gets ${dadGets}`);
