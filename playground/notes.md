@@ -33,4 +33,26 @@ Computers also have Infinity and -Infinity when the number becomes too large for
 
 NaN is 'Not a Number' and appears when doing an operation with a non-numeric type
 
+FUNCTIONS
+Built in functions
+Functions take in data, known as arguments that are "passed in"
+
+Math.max(10, 12) returns 12 - 10 and 12 are arguments that are passed the Math.max() method or statement. Multiple 
+arguments are 
+seperated by a comma ,
+
+parseFloat('20.3456789') will convert the string as a floating number (decimal)
+
+parseInt('20.3456789') will return from the string a whole number of 20
+
+Date.now() will return the number in milliseconds and https://epoch.vercel.app/ is a good tool for conversion to 
+various formats
+
+FUNCTIONS
+window.scrollTo( x, y) to move to specific coordinates on a page or
+
+window.scrollTo({
+top: 110, left: 0, behavior:'smooth'}
+) will move to the location set in the object that is passed to it.
+
 

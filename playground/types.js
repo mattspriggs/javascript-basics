@@ -89,3 +89,11 @@ const teller = {
 };
 teller.first = 'Teller';
 teller.last = null;
+
+/* BOOLEAN */
+//Used for logic, true and false values, set or calculated
+let isDrawing = false;
+const age = 18;
+const ofAge = age > 19;
+console.log(ofAge);
+// === will always check value and type where as == will only check the value (10 == "10" will be true)
