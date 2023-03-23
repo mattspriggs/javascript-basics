@@ -8,3 +8,8 @@ Boolean - true or false,
 Null - contains nothing,
 Undefined - Not set to a value,
 Symbol - gives a unique identifier
+
+NUMBERS
+
+Numbers will convert from a string if you are subtracting,multiplying or dividing but not addition since it will, by 
+default, concatenate the string.
