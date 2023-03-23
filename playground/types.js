@@ -52,3 +52,26 @@
 // const eachKidGets = Math.floor(smarties / kids);
 // const dadGets = smarties % kids;
 // console.log(`Each kid gets ${eachKidGets} and Dad gets ${dadGets}`);
+
+/*  OBJECTS */
+//Allows you to contain attributes of a thing in key value pairs - order is not maintained in objects. If you need
+// order to be maintained use an array
+//person.name will give the value of Matt in a string, person.age will give the value of the number 57, and
+// person.location
+// will giv you Dunedin, New Zealand in a string
+// const person = {
+//   name: 'Matt',
+//   age: 57,
+//   location: 'Dunedin, New Zealand',
+// };
+
+/* SYMBOLS */
+//Used in lower level applications
+
+/* NULL and UNDEFINED */
+//Two ways to express nothing
+let dog;
+console.log(dog); //Yields undefined - similarly if you try to access a value in an object that does not have a key
+// that matches the keys in the object it will return undefined - the variable also must be declared in order so the
+// console.log above remains undefined with the value set after it
+dog = 'Amber';
