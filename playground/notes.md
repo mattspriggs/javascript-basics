@@ -55,4 +55,4 @@ window.scrollTo({
 top: 110, left: 0, behavior:'smooth'}
 ) will move to the location set in the object that is passed to it.
 
-
+Parameters are placeholders, arguments are data 0- actual values - passed to the placeholder in the function
