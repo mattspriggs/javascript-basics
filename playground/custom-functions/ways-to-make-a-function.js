@@ -98,3 +98,25 @@ const matt = {
 };
 
 //Callback functions
+//Regular function that will run when something is done
+
+//Click callback
+const button = document.querySelector('.clickMe');
+
+function handleClick() {
+  console.log('Great Clicking!!!!');
+}
+// button.addEventListener('click', handleClick);
+button.addEventListener('click', function () {
+  console.log('Nice job!!!!!');
+});
+
+//Timer Callback
+setTimeout(matt.yellHi, 1000);
+setTimeout(function () {
+  console.log('DONE!');
+}, 2000);
+
+setTimeout(() => {
+  console.log('Time to eat.');
+}, 3000);
