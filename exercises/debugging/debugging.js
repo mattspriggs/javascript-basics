@@ -5,27 +5,39 @@ const people = [
 ];
 
 people.forEach((person, index) => {
-  console.groupCollapsed(`${person.name}`);
-  console.log(person.country);
-  console.log(person.cool);
-  console.log('DONE!');
-  console.groupEnd(`${person.name}`);
+  // console.groupCollapsed(`${person.name}`);
+  // console.log(person.country);
+  // console.log(person.cool);
+  // console.log('DONE!');
+  // console.groupEnd(`${person.name}`);
+  // debugger; //Will pause javascript from running
+  console.log(person.name);
 });
 
 // Console Methods
 
 //console.log, console.info, console.error, console.table, console.count, console.group, console.warn
-console.table(people);
+// console.table(people);
 
 // Callstack
+//The console will give you the call stack that you can trace to the error by referencing the app and line number
 
 // Grabbing Elements
+//If you inspect a web page you can grab an element and put $0 into the console it will grab the element selected
+//you can also call $0.value and get the input value
+//$ will get the first element that matches the input, ie $('p') gets the first paragraph, $$('p') gets all of the
+// paragraph tags
 
 // Breakpoints
+//typing in debugger in the code will pause the JavaScript and open a console window and you can step through the
+// code to see what is happening
+// Under the source tab of the browser you can also click on the line number of the code and it will work as a
+// debugger if you run in it in the console
 
 // Scope
 
 // Network Requests
+//
 
 // Break On Attribute
 
@@ -44,7 +56,8 @@ function doctorize(name) {
 }
 
 function greet(name) {
-  doesntExist();
+  //go calls greet on line 52
+  doesntExist(); //Will cause an error and shows in the stack trace
   return `Hello ${name}`;
 }
 
@@ -52,6 +65,12 @@ function go() {
   const name = doctorize(greet('Wes'));
   console.log(name);
 }
+
+function bootstrap() {
+  console.log('Starting the app');
+  go();
+}
+// bootstrap()
 
 const button = document.querySelector('.bigger');
 button.addEventListener('click', function (e) {
