@@ -5,10 +5,17 @@ const people = [
 ];
 
 people.forEach((person, index) => {
-  console.log(person.name);
+  console.groupCollapsed(`${person.name}`);
+  console.log(person.country);
+  console.log(person.cool);
+  console.log('DONE!');
+  console.groupEnd(`${person.name}`);
 });
 
 // Console Methods
+
+//console.log, console.info, console.error, console.table, console.count, console.group, console.warn
+console.table(people);
 
 // Callstack
 
@@ -23,6 +30,14 @@ people.forEach((person, index) => {
 // Break On Attribute
 
 // Some Setup Code
+
+function doALotOfStuff() {
+  console.group('Doing some stuff');
+  console.log("Hey I'm one");
+  console.warn('watch out');
+  console.error('Whoops!');
+  console.groupEnd('Doing some stuff');
+}
 
 function doctorize(name) {
   return `Dr. ${name}`;
