@@ -37,7 +37,9 @@ people.forEach((person, index) => {
 // Scope
 
 // Network Requests
-//
+//You can add break points in the browser going to sources and selecting event listener break points and hav it
+// break when someone performs and action such as mouse click, can also have it break on XHR - when ever it
+// performs a fetch request
 
 // Break On Attribute
 
