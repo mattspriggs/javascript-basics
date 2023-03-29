@@ -18,3 +18,10 @@ const heading = document.querySelector('h2');
 // console.dir(heading.innerText); //same as the above but only human-readable
 console.log(heading.textContent);
 console.log(heading.innerText);
+console.log(heading.innerHTML); //HTML that fills it
+console.log(heading.outerHTML); //Includes the h2 tag it is within and the inner html
+const pizzaList = document.querySelector('.pizza');
+console.log(pizzaList.textContent);
+// pizzaList.textContent = `${pizzaList.textContent} 🍕`;//very slow
+pizzaList.insertAdjacentText('beforeend', '🍕'); //better way to add text
+pizzaList.insertAdjacentText('afterbegin', '🍕');
