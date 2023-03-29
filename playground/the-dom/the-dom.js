@@ -33,3 +33,9 @@ pic.classList.remove('cool');
 // pic.classList.add('round');
 pic.classList.toggle('round');
 console.log(pic.classList);
+function toggleRound() {
+  pic.classList.toggle('round');
+}
+pic.addEventListener('click', toggleRound);
+//use in the console the command pic.classList.contains('round') to know when a class is present on an element
+//pic.className will return the class names but classList has other methods you can use, so it's a better choice
