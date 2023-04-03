@@ -49,3 +49,15 @@ console.log(pic.naturalWidth); //getter only -  need to wait for the image to ar
 pic.addEventListener('load', function () {
   console.log(pic.naturalWidth);
 });
+
+//NOT OFTEN USED
+// pic.setAttribute('alt', 'Really cute pup!');//Works for things that are non-standard
+// console.log(pic.getAttribute('alt'));
+
+//you can use the data-XXX = allows you to add metadata to items
+const custom = document.querySelector('.custom');
+console.log(custom.dataset); //dataset allows you to access the data on the element
+
+custom.addEventListener('click', function () {
+  alert(`Welcome ${custom.dataset.name} ${custom.dataset.last}`);
+});
