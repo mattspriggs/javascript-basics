@@ -39,3 +39,13 @@ function toggleRound() {
 pic.addEventListener('click', toggleRound);
 //use in the console the command pic.classList.contains('round') to know when a class is present on an element
 //pic.className will return the class names but classList has other methods you can use, so it's a better choice
+//Attributes are anything added to an element that provides additional data such as alt for img tags or class
+// attributes for styling and behavior, etc.
+
+pic.alt = 'Cute Pup'; //setter
+console.log(pic.alt); //getter
+console.log(pic.naturalWidth); //getter only -  need to wait for the image to arrive -  it will run as 0
+
+pic.addEventListener('load', function () {
+  console.log(pic.naturalWidth);
+});
