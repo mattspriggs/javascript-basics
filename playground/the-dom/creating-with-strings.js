@@ -26,3 +26,6 @@ document.body.appendChild(myFragment);
 // const itemImage = document.querySelector('.wrapper img');
 //
 // itemImage.classList.add('round');
+
+//XSS Cross Site Scripting
+//Need to sanitize user input to prevent HTML injection, only approved parties or the developer write JavaScript
