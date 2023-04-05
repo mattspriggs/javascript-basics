@@ -21,21 +21,37 @@ item2.insertAdjacentElement('afterend', item3);
 // create an image
 const image = document.createElement('img');
 const src = 'https://source.unsplash.com/random/300x300';
+const desc = 'Cute Puppy';
+// const html = `<img src="${src}" alt="${desc}"/>`
 
 // set the source to an image
+image.src = src;
 // set the width to 250
+image.width = 250;
 // add a class of cute
+image.classList.add('cute');
 // add an alt of Cute Puppy
+image.alt = desc;
 // Append that image to the wrapper
+div.appendChild(image);
 
 // with HTML string, make a div, with two paragraphs inside of it
+const htmlString = `
+	<div>
+		<p></p>
+		<p></p>
+	</div>
+`;
+const frag = document.createRange().createContextualFragment(htmlString);
 // put this div before the unordered list from above
-
+list.insertAdjacentElement('afterbegin', frag);
 // add a class to the second paragraph called warning
+frag.appendChild([1].classList.add(warning));
 // remove the first paragraph
+document.querySelector('p').remove();
 
 // create a function called generatePlayerCard that takes in three arguments: name, age, and height
-
+function generatePlayerCard(name, age, height) {}
 // have that function return html that looks like this:
 // <div class="playerCard">
 //   <h2>NAME — AGE</h2>
