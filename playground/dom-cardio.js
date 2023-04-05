@@ -70,7 +70,7 @@ function generatePlayerCard(name, age, height) {
   const card = `
 <div class="playerCard">
    <h2>${name} — ${age}</h2>
-   <p>They are ${height} and ${age} years old. In Dog years this person would be ${dogYears}. That would be a tall dog!</p>
+   <p>Their height is ${height} and ${age} years old. In Dog years this person would be ${dogYears}. That would be a tall dog!</p>
  </div>
 	`;
   return card;
@@ -85,13 +85,19 @@ function generatePlayerCard(name, age, height) {
 const cardDiv = document.createElement('div');
 cardDiv.classList.add('cards');
 // make 4 player cards using generatePlayerCard
-const player1 = generatePlayerCard('Matt', 57, '6\' 2"');
-const player2 = generatePlayerCard('Wes', 39, '5\' 9"');
-const player3 = generatePlayerCard('Kait', 57, '5\' 5"');
-const player4 = generatePlayerCard('Sarah', 57, '5\' 3"');
+// const player1 = generatePlayerCard('Matt', 57, '6\' 2"');
+// const player2 = generatePlayerCard('Wes', 39, '5\' 9"');
+// const player3 = generatePlayerCard('Kait', 57, '5\' 5"');
+// const player4 = generatePlayerCard('Sarah', 57, '5\' 3"');
+let playerCards = generatePlayerCard('Matt', 57, '6\' 2"');
+playerCards += generatePlayerCard('Wes', 39, '5\' 9"');
+playerCards += generatePlayerCard('Kait', 57, '5\' 5"');
+playerCards += generatePlayerCard('Sarah', 57, '5\' 3"');
 
 // append those cards to the div
-// cardDiv.appendChild(player1);
+cardDiv.innerHTML = playerCards;
+div.insertAdjacentElement('beforebegin', cardDiv);
+//OR ---
 // player1.insertAdjacentElement('afterend', player2);
 // player2.insertAdjacentElement('afterend', player3);
 // player4.insertAdjacentElement('afterend', player4);
