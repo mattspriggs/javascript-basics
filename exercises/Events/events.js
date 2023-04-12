@@ -91,3 +91,11 @@ window.addEventListener(
 //THE EVENT OBJECT
 //The event object contains a lot of information about the event that has happened
 //The event target is of most use; you can get teh data from the target including the location and the text content
+const photo = document.querySelector('.photo');
+photo.addEventListener('mouseenter', function (event) {
+  console.log(event.currentTarget);
+  console.log(this);
+  console.log(this === event.currentTarget); //this is attached to the target of the event listener
+  //     this keyword is = to whatever is to the left of the . - in photo.addEventListener it is equal to the photo
+  //     - this will not be preserved in an anonymous function, use .currentTarget
+});
