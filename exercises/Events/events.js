@@ -38,14 +38,14 @@ another.addEventListener('click', () => console.log('Clicked Another'));
 
 //LISTENING TO EVENTS ON MULTIPLE ITEMS
 const buyButtons = document.querySelectorAll('button.buy');
-console.log(buyButtons); //Need to add event listener to the Node List using forEach
-function handleBuy() {
-  console.log('Clicked Buy Button');
-}
-
-function attachListener(anyThingWeWant) {
-  anyThingWeWant.addEventListener('click', handleBuy);
-}
+// console.log(buyButtons); //Need to add event listener to the Node List using forEach
+// function handleBuy() {
+//   console.log('Clicked Buy Button');
+// }
+//
+// function attachListener(anyThingWeWant) {
+//   anyThingWeWant.addEventListener('click', handleBuy);
+// }
 //BETTER FACTOR
 // buyButtons.forEach((button) => button.addEventListener('click', handleBuy)); - But cannot be unbound
 
@@ -54,4 +54,16 @@ function attachListener(anyThingWeWant) {
 // button.addEventListener('click', handleBuy)
 // }); - can also remove in a loop to remove all
 
-buyButtons.forEach(attachListener);
+// buyButtons.forEach(attachListener);
+
+function handleBuyButtonClick(event) {
+  const button = event.target;
+  console.log(button.textContent);
+  console.log(parseFloat(event.target.dataset.price));
+} //Adding data to the button and accessing the value and parse the info to a float to preserve decimals
+
+buyButtons.forEach(function (buyButton) {
+  buyButton.addEventListener('click', handleBuyButtonClick);
+});
+
+//THE EVENT OBJECT
