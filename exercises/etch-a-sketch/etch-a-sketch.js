@@ -2,6 +2,7 @@
 const canvas = document.querySelector('#etch-a-sketch');
 const ctx = canvas.getContext('2d');
 const shakeButton = document.querySelector('.shake');
+const MOVE_AMOUNT = 10; //this is to note that it is a true constant in all caps and underscores
 //Setup canvas for drawing
 // const width = canvas.width;//destructured is const {width} = canvas
 // const height = canvas.height;//destructured is const {height} = canvas
@@ -28,8 +29,24 @@ function draw({ key }) {
   ctx.beginPath();
   ctx.moveTo(x, y);
   //move the x and y depending on what the user did
-  x = x - 10; //same as x -= 10
-  y = y - 10; //same as y -= 10
+  switch (key) {
+    case 'ArrowUp':
+      y = y - MOVE_AMOUNT;
+      break;
+    case 'ArrowDown':
+      y = y + MOVE_AMOUNT;
+      break;
+    case 'ArrowLeft':
+      x = x - MOVE_AMOUNT;
+      break;
+    case 'ArrowRight':
+      x = x + MOVE_AMOUNT;
+      break;
+    default:
+      break;
+  }
+  // x = x - MOVE_AMOUNT; //same as x -= 10
+  // y = y - MOVE_AMOUNT; //same as y -= 10
   ctx.lineTo(x, y);
   ctx.stroke();
 }
