@@ -16,13 +16,17 @@ let y = Math.floor(Math.random() * height); //Random y start on the canvas
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
 ctx.lineWidth = 10;
-
+let hue = 0;
+ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 ctx.beginPath(); //Starts the drawing
 ctx.moveTo(x, y);
 ctx.lineTo(x, y);
 ctx.stroke();
 //Write the draw function
 function draw({ key }) {
+  //Increment the hue by 1 each time this runs and update the stroke style
+  hue += 10;
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
   //grabs the property from the options object as a variable through destructuring
   console.log(key);
   //start the path
@@ -58,6 +62,19 @@ function handleKey(e) {
   }
 }
 //Clear/shake function
-
+function clearCanvas() {
+  canvas.classList.add('shake');
+  ctx.clearRect(0, 0, width, height);
+  canvas.addEventListener(
+    'animationend',
+    function () {
+      //remove the shake class when the animation ends so it can be
+      // run again by adding the class that will run the CSS animation of shaking
+      canvas.classList.remove('shake');
+    },
+    { once: true }
+  ); //this option will remove the listener after it is done, otherwise it will add it multiple times
+}
 //Listen for arrow keys
 window.addEventListener('keydown', handleKey);
+shakeButton.addEventListener('click', clearCanvas);
