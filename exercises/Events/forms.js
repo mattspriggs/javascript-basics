@@ -36,6 +36,15 @@ signupForm.addEventListener('submit', function (event) {
 
 //COMMON EVENTS
 //'keyup'
+function logEvent(event) {
+  console.log(event.type);
+  console.log(event.currentTarget.value);
+}
+signupForm.name.addEventListener('keyup', logEvent);
+
 //'keydown'
+signupForm.name.addEventListener('keydown', logEvent);
 //'focus'
+signupForm.name.addEventListener('focus', logEvent); //cursor is in and input
 //'blur'
+signupForm.name.addEventListener('blur', logEvent); //cursor moves out of the input
