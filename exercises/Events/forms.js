@@ -16,3 +16,26 @@ wes.addEventListener('click', function (event) {
   //prevents redirecting to the URL in the link - use in setting of console Preserve Log to
   // keep access to the log if it gets lost due to the refresh, such as going to another website
 });
+
+const signupForm = document.querySelector('[name="signup"]'); //Use name='["attribute"]' to select by things that are
+// attributes such as name
+
+signupForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  // event.currentTarget.querySelector('[name="email"]')- only needed if you are not giving it a name and id
+  console.log(event.currentTarget.name.value);
+  console.log(event.currentTarget.email.value);
+  console.log(event.currentTarget.agree.checked);
+  const name = event.currentTarget.name.value;
+  if (name.includes('chad')) {
+    //use RegEx for insensitive to case
+    alert('Sorry Bro');
+    event.preventDefault();
+  }
+});
+
+//COMMON EVENTS
+//'keyup'
+//'keydown'
+//'focus'
+//'blur'
