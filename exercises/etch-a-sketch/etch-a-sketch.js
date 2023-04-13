@@ -21,9 +21,26 @@ ctx.moveTo(x, y);
 ctx.lineTo(x, y);
 ctx.stroke();
 //Write the draw function
-
+function draw({ key }) {
+  //grabs the property from the options object as a variable through destructuring
+  console.log(key);
+  //start the path
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  //move the x and y depending on what the user did
+  x = x - 10; //same as x -= 10
+  y = y - 10; //same as y -= 10
+  ctx.lineTo(x, y);
+  ctx.stroke();
+}
 //Write a handler for the keys
-
+function handleKey(e) {
+  if (e.key.includes('Arrow')) {
+    e.preventDefault(); //Prevents the up and down arrows from scrolling the page
+    draw({ key: e.key });
+  }
+}
 //Clear/shake function
 
 //Listen for arrow keys
+window.addEventListener('keydown', handleKey);
