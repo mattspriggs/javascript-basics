@@ -8,6 +8,7 @@ function scrollToAccept() {
     // console.log(payload[0].intersectionRatio);
     if (payload[0].intersectionRatio === 1) {
       button.disabled = false;
+      ob.unobserve(terms.lastElementChild); //stop observing the buttongit add
     } else {
       button.disabled = true;
     }
