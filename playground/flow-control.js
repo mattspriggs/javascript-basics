@@ -1,4 +1,5 @@
 const age = 50;
+const sentence = 'I am very cool';
 if (age >= 70) {
   console.log('In your seventies');
 } else if (age >= 60) {
@@ -18,7 +19,32 @@ if (10 > 2) {
 function slugify(sentence, lowercase) {
   if (lowercase) {
     return sentence.replace(/\s/g, '-').toLowerCase();
-  } else {
-    return sentence.replace(/\s/g, '-');
+  } //else {
+  return sentence.replace(/\s/g, '-'); //else can be assumed
+  //}
+}
+//OR
+function slugify2(sentence, lowercase) {
+  let slug = sentence.replace(/\s/g, '-');
+  if (lowercase) {
+    slug = slug.toLowerCase();
   }
+  return slug;
+}
+
+slugify(sentence, true);
+slugify2(sentence, true);
+
+const name = 'Matt';
+const last = 'Spriggs';
+if (name === 'Matt' || name === 'Sarah') {
+  console.log('Cool name');
+}
+
+if (name === 'Matt' && last === 'Spriggs') {
+  console.log('Nerdy gamer dude!');
+}
+
+if (name === 'Sarah' || (name === 'Matt' && last === 'Spriggs')) {
+  console.log('Great ex-pat couple in New Zealand, land of the Kiwis');
 }
