@@ -1,0 +1,14 @@
+const tabs = document.querySelector('.tabs');
+const tabButtons = tabs.querySelectorAll('[role="tab"]');
+const tanPanels = tabs.querySelectorAll('[role="tabpanel"]');
+
+function handleTabClick(event) {
+  //When the tab is clicked hide all others
+  console.log(tanPanels);
+  //Mark all tabs as unselected
+  //Mark the clicked tab as selected
+  //Find the tab panel and show it
+}
+tabButtons.forEach((button) =>
+  button.addEventListener('click', handleTabClick)
+);
