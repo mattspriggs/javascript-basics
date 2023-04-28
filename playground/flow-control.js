@@ -82,3 +82,26 @@ if (dog) {
 } else {
   console.log('you do not have a dog'); //will evaluate false if there is an empty string or value '', or if
 }
+
+const values = [
+  [],
+  {},
+  -10,
+  1,
+  0,
+  '',
+  'full string',
+  ' ',
+  undefined,
+  NaN,
+  null,
+];
+console.group('truthy or falsy values');
+values.forEach((value) => {
+  if (value) {
+    console.log(value, 'is truthy');
+  } else {
+    console.log(value, 'is falsy');
+  }
+});
+console.groupEnd();
