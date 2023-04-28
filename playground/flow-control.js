@@ -48,3 +48,37 @@ if (name === 'Matt' && last === 'Spriggs') {
 if (name === 'Sarah' || (name === 'Matt' && last === 'Spriggs')) {
   console.log('Great ex-pat couple in New Zealand, land of the Kiwis');
 }
+
+const word = 'awesome';
+const word1 = 'wes';
+const word2 = 'scott';
+if (word.includes(word1)) {
+  console.log('Included');
+} else {
+  console.log('Not included');
+}
+if (word.includes(word2)) {
+  console.log('Included');
+} else {
+  console.log('Not included');
+}
+const isAwesomeName = word.includes(word1);
+if (isAwesomeName) {
+  console.log('SUPER COOL NAME');
+}
+
+function nameIsAwesome(name) {
+  return 'awesome'.includes(name);
+}
+
+if (nameIsAwesome('wes')) {
+  console.log('COOLEST NAME');
+}
+
+//TRUTHY and FALSY
+const dog = 'snickers';
+if (dog) {
+  console.log('you have a dog'); //evaluates true if there is a value for dog
+} else {
+  console.log('you do not have a dog'); //will evaluate false if there is an empty string or value '', or if
+}
