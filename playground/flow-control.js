@@ -105,3 +105,24 @@ values.forEach((value) => {
   }
 });
 console.groupEnd();
+
+console.clear();
+
+const isCool = true;
+if (!isCool) {
+  console.log('You are not cool.');
+}
+
+//COERCION - BETTER TO USE TRUTHY AND FALSY but is used to change to a different type
+const name2 = 'Wes';
+!name2; // Will coerce to a boolean - does it exist?
+!!name2; //Will convert to a real boolean - is there a value - truthy/falsy
+
+//TERNARY
+const count = 2;
+let word3;
+if (count === 1) {
+  word3 = 'item';
+} else {
+  word3 = 'items';
+}
