@@ -119,10 +119,20 @@ const name2 = 'Wes';
 !!name2; //Will convert to a real boolean - is there a value - truthy/falsy
 
 //TERNARY
-const count = 2;
-let word3;
-if (count === 1) {
-  word3 = 'item';
-} else {
-  word3 = 'items';
-}
+const count = 1;
+// let word3;
+// if (count === 1) {
+//   word3 = 'item';
+// } else {
+//   word3 = 'items';
+// }
+
+// CONVERTED TO A TERNARY
+//Condition
+//What to do if true
+//What to do if false
+const word3 = count === 1 ? 'item' : 'items';
+//                   condition     true      false
+
+const sentence2 = `You have ${count} ${word3} in your cart.`;
+console.log(sentence2);
