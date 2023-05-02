@@ -119,7 +119,7 @@ const name2 = 'Wes';
 !!name2; //Will convert to a real boolean - is there a value - truthy/falsy
 
 //TERNARY
-const count = 1;
+const count = 2;
 // let word3;
 // if (count === 1) {
 //   word3 = 'item';
@@ -136,3 +136,36 @@ const word3 = count === 1 ? 'item' : 'items';
 
 const sentence2 = `You have ${count} ${word3} in your cart.`;
 console.log(sentence2);
+const sentence3 = `You have ${count} item${
+  count === 1 ? '' : 's'
+} in your cart.`;
+console.log(sentence3);
+
+function showAdminBar() {
+  console.log('Is Admin');
+}
+const isAdmin = true;
+isAdmin ? showAdminBar() : null;
+//AND AND TRICK
+function check1() {
+  console.log('Running check 1');
+  return true;
+}
+function check2() {
+  console.log('Running check 2');
+  return false; //this provides the short circuit to the else
+}
+function check3() {
+  console.log('Running check 3');
+  return true;
+}
+
+if (check1() && check2() && check3()) {
+  console.log('all checks pass');
+} else {
+  console.log('Some checks failed');
+}
+
+isAdmin && showAdminBar();
+
+if (isAdmin) showAdminBar(); //single line if will run without curly brackets, multi-line requires
