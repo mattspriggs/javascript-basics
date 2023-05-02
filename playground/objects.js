@@ -22,3 +22,18 @@ console.log(person);
 
 console.log(person.age, person.job); //. notation used to access a value of a property
 console.log(person['age'], person['job']); //[] will access via the property (key) name
+const propertyToCheck = prompt('What do you want to check?');
+console.log(propertyToCheck);
+console.log(person[propertyToCheck]);
+console.log(['really-cool']); //cannot access custom properties using . notation
+console.log(person.clothing.pants); //this is how you access nested information
+
+const nameInput = document.querySelector('[name="first"]');
+// const name = nameInput.value;//will be undefined on page load and break
+// console.log(name);
+
+const name = nameInput ? nameInput.value : '';
+console.log(name);
+delete person.job; //removes the property
+person.age = undefined; //saves the property but leaves it blank
+person.age = null; //saves the property but leaves it blank
