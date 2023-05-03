@@ -61,6 +61,10 @@ name2 = 'Matthew'; //only will update the name2 variable
 const person1 = {
   first: 'Matt',
   last: 'Spriggs',
+  clothing: {
+    shirts: 10,
+    pants: 2,
+  },
 };
 const person2 = {
   first: 'Matt',
@@ -78,3 +82,6 @@ const person3 = { ...person1 };
 //OR
 const person4 = Object.assign({}, person1);
 person3.first = 'Larry'; //Will assign it only to the person3 object.  It is a true object and not a reference to person1
+//Only goes one level deep so clothing
+person3.clothing.shirts = 100; //Creates a reference only and will update person1 clothing object also
+//DEEP CLONE - USING A UTILITY LIBRARY - LoDash
