@@ -46,3 +46,24 @@ person.age = '57'; //alter a property value
 // person.age = null; //saves the property but leaves it blank
 
 //METHODS
+//REFERENCE VS VALUE
+let name1 = 'Matt';
+let name2 = 'Matt';
+console.log(name1 === name2); //true
+name1 = 'Sarah';
+console.log(name1 === name2); //false
+//update name1 to name2
+name1 = name2;
+console.log(name1 === name2); //reassigned
+name2 = name1;
+name2 = 'Matthew'; //only will update the name2 variable
+
+const person1 = {
+  first: 'Matt',
+  last: 'Spriggs',
+};
+const person2 = {
+  first: 'Matt',
+  last: 'Spriggs',
+};
+console.log(person1 === person2); //false despite being the same object contents because it references the object itself
