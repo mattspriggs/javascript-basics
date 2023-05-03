@@ -101,3 +101,20 @@ const veggieInventory = {
 };
 const inventory = { ...meatInventory, ...veggieInventory, oysters: 10 };
 console.log(inventory);
+
+function doStuff(data) {
+  data = 'something else';
+  console.log(data);
+}
+
+doStuff(name1); //changes it only via reference, the name1 is still Matt and not changes the variable - true with
+// strings, booleans, numbers
+console.log(name1);
+
+function doStuff2(data) {
+  data.tomatoes = 10000000000;
+  console.log(data);
+}
+doStuff2(inventory);
+console.log(inventory); //Modified the inventory of tomatoes in the original object or array - use a reference if
+// you want to preserve the original array or object
