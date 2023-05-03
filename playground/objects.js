@@ -67,3 +67,14 @@ const person2 = {
   last: 'Spriggs',
 };
 console.log(person1 === person2); //false despite being the same object contents because it references the object itself
+// const person3 = person1
+// person3.first = 'Larry'
+// console.log(person3.first)//Larry
+// console.log(person1.first)//Larry - updates both due to reference const person3 = person1 is a reference - points to
+// person1 and is not an object
+
+//TO COPY AN OBJECT USE THE SPREAD OPERATOR
+const person3 = { ...person1 };
+//OR
+const person4 = Object.assign({}, person1);
+person3.first = 'Larry'; //Will assign it only to the person3 object.  It is a true object and not a reference to person1
