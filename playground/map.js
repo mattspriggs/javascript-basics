@@ -3,7 +3,7 @@ const person1 = {
   name: 'Matt',
   age: 57,
 };
-
+//USE TO KEEP ORDER - NO LITERAL SO MUST CREATE AND THEN SET, CANNOT HOLD FUNCTIONS/METHODS - OBJECTS CAN
 const myMap = new Map();
 //.set()
 myMap.set('name', 'Matt'); //keys can be any type, order is guaranteed
@@ -28,4 +28,13 @@ for (const [points, prize] of prizes) {
 // console.log(myMap);
 
 //.has()
-//.delete
+
+//.delete()
+myMap.delete(name);
+console.log(myMap);
+
+//TO TRANSFER A MAP
+//JSON - maps are not supported
+//JSON.stringify(person) - creates text to transfer
+//JSON.parse(person) - converts it back to an object
+Object.fromEntries(myMap); //Converts the map to an object - then can send via JSON
