@@ -85,3 +85,19 @@ person3.first = 'Larry'; //Will assign it only to the person3 object.  It is a t
 //Only goes one level deep so clothing
 person3.clothing.shirts = 100; //Creates a reference only and will update person1 clothing object also
 //DEEP CLONE - USING A UTILITY LIBRARY - LoDash
+const person5 = _.cloneDeep(person1);
+console.log(person5);
+person5.clothing.shirts = 5;
+console.log(person5);
+console.log(person1);
+//MERGING OBJECTS
+const meatInventory = {
+  bacon: 5,
+  sausage: 3,
+};
+const veggieInventory = {
+  lettuce: 5,
+  tomatoes: 10,
+};
+const inventory = { ...meatInventory, ...veggieInventory, oysters: 10 };
+console.log(inventory);
