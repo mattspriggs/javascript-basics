@@ -19,18 +19,30 @@ names.unshift('Poppy'); //Adds to the front of the array
 const names3 = ['Petty', ...names];
 console.log(names);
 console.log(names3);
-//SLICE (Immutable) AND SPLICE (Mutable)
 
 //MUTABLE = CAN CHANGE THE ORIGINAL ARRAY
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const numbers4 = [...numbers];
 const numbers5 = [...numbers];
+//SPLICE (Mutable)
 console.log(numbers4);
 console.log(numbers4.splice(2, 2)); //takes out index 3 and 4 from the original array
 console.log(numbers4);
+//AND SLICE (Immutable)
 console.log(numbers5);
 console.log(numbers5.slice(2, 4)); //takes out index 3 and 4 from the original array
 console.log(numbers5);
+
+const bikes = ['bianchi', 'miele', 'panasonic', 'miyata'];
+console.log(bikes);
+
+const newBikes = [...bikes.slice(0, 2), 'benotto', ...bikes.slice(2)]; //Not putting an end will run to the end of
+// the array
+console.log(newBikes);
+
+const newBikes2 = [...newBikes.slice(0, 3), ...newBikes.slice(4)]; //Removes panasonic at indes 3 as the slice does
+// not include the end index
+console.log(newBikes2);
 
 // const reverseNumbers = numbers.reverse();
 // console.log(numbers); //CHANGED
