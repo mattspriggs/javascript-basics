@@ -44,6 +44,38 @@ const newBikes2 = [...newBikes.slice(0, 3), ...newBikes.slice(4)]; //Removes pan
 // not include the end index
 console.log(newBikes2);
 
+const comments = [
+  //if it is declared via let you can overwrite the array
+  { text: 'Cool Beans', id: 123 },
+  { text: 'Like it!', id: 124 },
+  { text: 'Stupid idea', id: 125 },
+  { text: 'Best idea ever', id: 126 },
+  { text: 'NOT Cool Beans', id: 127 },
+];
+
+function deleteComment(id, comments) {
+  //first find the index of the item in the array
+  const commentIndex = comments.findIndex((comment) => comment.id === id);
+  //Make and return a new array without item
+  return [
+    ...comments.slice(0, commentIndex),
+    ...comments.slice(commentIndex + 1),
+  ];
+}
+console.log(deleteComment(125, comments)); //Will not mutate the original array
+console.log(comments);
+const emmaIndex = names.findIndex((name) => name === 'Emma');
+const newNamesWithOutEmma = [
+  //get everything up to Emma index
+  ...names.slice(0, emmaIndex),
+  //everything after Emma index
+  ...names.slice(emmaIndex + 1),
+  //OR
+  //names.slice(0, emmaIndex),
+  //names.slice(emmaIndex + 1)].flat()
+];
+console.log(emmaIndex);
+console.log(names[emmaIndex]);
 // const reverseNumbers = numbers.reverse();
 // console.log(numbers); //CHANGED
 // console.log(reverseNumbers); //CHANGES THE ORIGINAL ARRAY
