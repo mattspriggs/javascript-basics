@@ -126,3 +126,8 @@ const inventory = [
 /*
  Looping Methods
  */
+
+function logTopping(topping) {
+  console.log(topping);
+}
+toppings.forEach(logTopping);
