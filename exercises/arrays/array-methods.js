@@ -62,14 +62,36 @@ const range2 = Array.from({ length: 10 }, (item, index) => index);
 console.log(range2); //Array with the index number in each array index 0:0, 1:1, ...
 
 function createRange(start, end) {
-  const range = Array.from({ length: end - start }, (item, index) => index);
+  const range = Array.from(
+    { length: end - start + 1 },
+    (item, index) => index + start
+  );
   return range;
 }
 
-console.log(createRange(3, 7));
+console.log(createRange(3, 70));
+
+const myRange = createRange(4, 2000);
+console.log(myRange);
 // Check if the last array you created is really an array with Array.isArray();
+console.log(Array.isArray(myRange)); // will be true - typeOf will show it as an object not array
 
 // Take the meats object and make three arrays with Object.entries(), Object.keys, Object.values()
+
+console.log(Object.entries(meats));
+console.log(Object.keys(meats));
+console.log(Object.values(meats));
+
+Object.entries(meats).forEach((entry) => console.log(entry));
+Object.keys(meats).forEach((key) => console.log(key));
+Object.values(meats).forEach((qty) => console.log(qty));
+
+Object.entries(meats).forEach((entry) => {
+  // const key = entry[0];
+  // const value = entry[1];
+  const [key, value] = entry; //refactored using destructuring
+  console.log(key, value);
+});
 
 /*
  Instance Methods
