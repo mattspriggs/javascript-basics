@@ -232,12 +232,49 @@ const areThereAtLeastThreeOfEveryMeat = Object.values(meats).every(
 );
 console.log(areThereAtLeastThreeOfEveryMeat);
 // sort the toppings alphabetically with sort()
-const toppingsSorted = toppings.sort();
+const toppingsSorted = toppings.sort(); //Works with strings by default and sorts alphabetically
 console.log(toppingsSorted);
 // sort the order totals from most expensive to least with .sort()
 
-// Sort the prices with sort()
+// const totalsSortedHighToLow = orderTotals.sort(function (
+//   firstItem,
+//   secondItem
+// ) {
+//   if (firstItem < secondItem) {
+//     return 1;
+//   } else if (firstItem > secondItem) {
+//     return -1;
+//   } else {
+//     return 0;
+//   }
+// });
 
+// REFACTORED
+const totalsSortedHighToLow = orderTotals.sort(function (
+  firstItem,
+  secondItem
+) {
+  return secondItem - firstItem;
+});
+console.log(totalsSortedHighToLow);
+console.log(totalsSortedHighToLow.reverse());
+
+const totalsSortedLowToHigh = orderTotals.sort(
+  (firstItem, secondItem) => firstItem - secondItem
+);
+console.log(totalsSortedLowToHigh);
+console.log(totalsSortedLowToHigh.reverse());
+// Sort the prices with sort()
+const productsSortedByPrice = Object.entries(prices).sort(function (
+  firstItem,
+  secondItem
+) {
+  const firstPrice = firstItem[1];
+  const secondPrice = secondItem[1];
+  return firstPrice - secondPrice;
+});
+console.table(productsSortedByPrice);
+console.table(Object.fromEntries(productsSortedByPrice)); //changes it back to an object
 /*
  Looping Methods (next)
  */
