@@ -92,6 +92,10 @@ Object.entries(meats).forEach((entry) => {
   const [key, value] = entry; //refactored using destructuring
   console.log(key, value);
 });
+//OR
+Object.entries(meats).forEach(([key, value]) => {
+  console.log(key, value);
+});
 
 /*
  Instance Methods
