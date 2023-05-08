@@ -169,3 +169,18 @@ function addArms(face) {
 const toys = faces.map(addArms);
 
 console.log(toys);
+
+function bosify(name) {
+  return `${name} Bos`;
+}
+
+function capitalize(word) {
+  return `${word[0].toUpperCase()}${word.slice(1)}`;
+}
+
+const fullNames = ['wes', 'kait', 'poppy'].map((name) => `${name} bos`);
+const fullNames2 = ['wes', 'kait', 'poppy'].map(bosify);
+const fullNames3 = ['wes', 'kait', 'poppy'].map(capitalize).map(bosify);
+console.log(fullNames);
+console.log(fullNames2);
+console.log(fullNames3);
