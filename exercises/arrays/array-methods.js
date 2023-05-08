@@ -126,13 +126,39 @@ let newToppings = toppings.slice(0, toppings.length - 1); //Remove last
 console.log(newToppings);
 newToppings = [...newToppings, toppings[toppings.length - 1]]; //add via reference to the last item in the original array
 console.log(newToppings);
+let newToppings2 = toppings.slice(1, toppings.length); //Remove first
+console.log(newToppings2);
+newToppings2 = [toppings[0], ...newToppings2]; //add via reference to the last item in the original
+// array
+console.log(newToppings2);
 // Make a copy of the toppings array with slice()
+const toppingCopy = toppings.slice(0);
+toppings[0] = 'Mushy Boi';
+console.log(toppings);
+console.log(toppingCopy);
 // Make a copy of the toppings array with a spread
+const spreadCopy = [...toppings];
+console.log(spreadCopy);
 // take out items 3 to 5 of your new toppings array with splice()
+toppingCopy.splice(2, 3);
+console.log(toppingCopy);
 // find the index of Avocado with indexOf() / lastIndexOf()
+const avoIndex = toppings.indexOf('Avocado');
+console.log(avoIndex);
 // Check if hot sauce is in the toppings with includes()
+const isInToppings = toppings.includes('Hot Sauce');
+console.log(isInToppings);
 // add it if it's not
+if (!isInToppings) {
+  toppings.push('Hot Sauce');
+}
+console.log(toppings);
 // flip those toppings around with reverse()
+toppings.reverse(); //MUTABLE
+console.log(toppings);
+const reverseToppings = [...toppings].reverse(); //IMMUTABLE
+console.log(reverseToppings);
+console.log(toppings);
 
 /*
  Callback Methods
