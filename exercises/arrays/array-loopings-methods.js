@@ -127,7 +127,32 @@ const inventory = [
  Looping Methods
  */
 
-function logTopping(topping) {
+function logTopping(topping, index, originalArray) {
+  // console.log(topping, index, originalArray);
+  const nextTopping = originalArray[index + 1];
+  const previousTopping = originalArray[index - 1];
+  //log the topping
   console.log(topping);
+  //log the previous topping if there is one
+  previousTopping ? console.log(previousTopping) : null;
+
+  //log the next topping if there is one
+
+  // if (nextTopping) {
+  //   console.log(nextTopping);
+  // } else {
+  //   console.log('Goodbye....');
+  // }
+  // OR
+  nextTopping ? console.log(nextTopping) : null;
+  //if it's the last item in the array say goodbye
+  index === originalArray.length - 1
+    ? console.log('Goodbye...')
+    : console.log('Getting next Topping');
+  console.log('-------------🍕------------');
 }
 toppings.forEach(logTopping);
+
+// toppings.forEach((topping) => {
+//   console.log(topping);
+// });
