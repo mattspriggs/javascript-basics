@@ -161,10 +161,42 @@ console.log(reverseToppings);
 console.log(toppings);
 
 /*
- Callback Methods
+ Callback Methods - FUNCTION AS AN ARGUMENT
  */
 
 // find the first rating that talks about a burger with find()
+// function findBurgRating(singleFeedback) {
+//   return singleFeedback.comment.includes('burger');
+// }
+// const findBurgerRating2 = (singleFeedback) =>
+//   singleFeedback.comment.includes('burger');
+// console.log(findBurgerRating2);
+//
+// function findBurgerRating3(singleFeedback) {
+//   return singleFeedback.comment.includes('burger');
+// }
+// // console.log(findBurgerRating3(burgRating));
+// // const burgRating = feedback.find((feedback) =>
+// //   feedback.comment.includes('burger')
+// // );
+// const burgRating = feedback.find(findBurgRating);
+// console.log(burgRating);
+
+//UTILITY VERSION
+// const util = {
+//   findBurgerRating: function (singleFeedback) {
+//     return singleFeedback.comment.includes('burger');
+//   },
+// };
+
+function findByWord(word) {
+  return function (singleFeedBack) {
+    return singleFeedBack.comment.includes(word);
+  };
+}
+const findRating = feedback.find(findByWord('Smoothie'));
+console.log(findRating);
+
 // find all ratings that are above 2 with filter()
 // find all ratings that talk about a burger with filter()
 // Remove the one star rating however you like!
