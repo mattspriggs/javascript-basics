@@ -108,16 +108,24 @@ console.log(buns.join(' or '));
 const foodString = 'hot dogs,hamburgers,sausages,corn';
 const foodArray = foodString.split(',');
 console.log(foodArray);
-// take the last item off toppings with pop()
+// take the last item off toppings with pop() - MUTABLE
 const lastTopping = toppings.pop(); //mutable function
 console.log(lastTopping, toppings);
-// add it back with push()
+// add it back with push() - MUTABLE
 toppings.push(lastTopping);
 console.log(toppings);
-// take the first item off toppings with shift()
-// add it back in with unshift()
+// take the first item off toppings with shift() - MUTABLE
+const firstTopping = toppings.shift();
+console.log(firstTopping);
+console.log(toppings);
+// add it back in with unshift() - MUTABLE
+toppings.unshift(firstTopping);
+console.log(toppings);
 // Do the last four,but immutable (with spreads and new variables)
-
+let newToppings = toppings.slice(0, toppings.length - 1); //Remove last
+console.log(newToppings);
+newToppings = [...newToppings, toppings[toppings.length - 1]]; //add via reference to the last item in the original array
+console.log(newToppings);
 // Make a copy of the toppings array with slice()
 // Make a copy of the toppings array with a spread
 // take out items 3 to 5 of your new toppings array with splice()
