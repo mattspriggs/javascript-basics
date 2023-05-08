@@ -102,11 +102,18 @@ Object.entries(meats).forEach(([key, value]) => {
  */
 
 // Display all bun types with " or " - use join()
+console.log(buns.join(' or '));
 
 // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into a string
-
+const foodString = 'hot dogs,hamburgers,sausages,corn';
+const foodArray = foodString.split(',');
+console.log(foodArray);
 // take the last item off toppings with pop()
+const lastTopping = toppings.pop(); //mutable function
+console.log(lastTopping, toppings);
 // add it back with push()
+toppings.push(lastTopping);
+console.log(toppings);
 // take the first item off toppings with shift()
 // add it back in with unshift()
 // Do the last four,but immutable (with spreads and new variables)
