@@ -149,10 +149,23 @@ function logTopping(topping, index, originalArray) {
   index === originalArray.length - 1
     ? console.log('Goodbye...')
     : console.log('Getting next Topping');
+  // OR
+  // index === originalArray.length && console.log('Goodbye...) - takes advantage of the conditional to short
+  // circuit the function
   console.log('-------------🍕------------');
 }
-toppings.forEach(logTopping);
+toppings.forEach(logTopping); //Will not return anything, just iterates something
 
 // toppings.forEach((topping) => {
 //   console.log(topping);
 // });
+
+//MAP, FILTER, REDUCE
+console.clear();
+function addArms(face) {
+  return `👋 ${face} 👋`;
+}
+
+const toys = faces.map(addArms);
+
+console.log(toys);
