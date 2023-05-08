@@ -198,13 +198,44 @@ const findRating = feedback.find(findByWord('Smoothie'));
 console.log(findRating);
 
 // find all ratings that are above 2 with filter()
+const goodReviews = feedback.filter(
+  (singleFeedback) => singleFeedback.rating > 2
+);
+console.table(goodReviews);
+
+function filterByMinRating(minRating) {
+  return function (singleFeedback) {
+    return singleFeedback.rating > minRating;
+  };
+}
+const goodReviews2 = feedback.filter(filterByMinRating(3));
+console.table(goodReviews2);
 // find all ratings that talk about a burger with filter()
-// Remove the one star rating however you like!
+const burgRatings = feedback.filter((singleFeedback) =>
+  singleFeedback.comment.includes('burg')
+);
+const burgRatings2 = feedback.filter(findByWord('burg'));
+console.table(burgRatings);
+console.table(burgRatings2);
+// Remove the one-star rating however you like!
+const legitRatings = feedback.filter((bad) => bad.rating !== 1);
+console.table(legitRatings);
 
 // check if there is at least 5 of one type of meat with some()
+const isThereEnoughOfAtLeastOneMeat = Object.values(meats).some(
+  (meatValue) => meatValue >= 5
+);
+console.log(isThereEnoughOfAtLeastOneMeat);
 // make sure we have at least 3 of every meat with every()
+const areThereAtLeastThreeOfEveryMeat = Object.values(meats).every(
+  (meatValue) => (meatValue) => 3
+);
+console.log(areThereAtLeastThreeOfEveryMeat);
 // sort the toppings alphabetically with sort()
+const toppingsSorted = toppings.sort();
+console.log(toppingsSorted);
 // sort the order totals from most expensive to least with .sort()
+
 // Sort the prices with sort()
 
 /*
