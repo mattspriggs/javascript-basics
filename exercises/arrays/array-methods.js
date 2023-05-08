@@ -51,7 +51,22 @@ console.log(example2);
 const example3 = Array.of(...'wes'); //can be done in a function/method
 console.log(example3);
 // Make a function that creates a range from x to y with Array.from();
+//Takes an iterable (something with a length)
+const example4 = Array.from({ length: 10 }); //Provides a blank array with 10 indexes
+console.log(example4);
 
+const range = Array.from({ length: 10 }, () => 'wes');
+console.log(range); //Array with 10 wes entries
+
+const range2 = Array.from({ length: 10 }, (item, index) => index);
+console.log(range2); //Array with the index number in each array index 0:0, 1:1, ...
+
+function createRange(start, end) {
+  const range = Array.from({ length: end - start }, (item, index) => index);
+  return range;
+}
+
+console.log(createRange(3, 7));
 // Check if the last array you created is really an array with Array.isArray();
 
 // Take the meats object and make three arrays with Object.entries(), Object.keys, Object.values()
