@@ -259,3 +259,21 @@ function tallyNumbers(tally, currentTotal) {
   return tally + currentTotal; //Have to return the accumulator value for it to combine all items in the array
 }
 const allOrders = orderTotals.reduce(tallyNumbers, 0);
+
+console.log(allOrders);
+
+function inventoryReducer(totals, item) {
+  console.log(`Looping over ${item.type}`);
+  //Increment the type by 1
+  totals[item.type] = totals[item.type] + 1 || 1; //Use [] to look up the property on an object
+  //return the totals so the next loop can use it
+  return totals;
+}
+const inventoryCounts = inventory.reduce(inventoryReducer, {});
+console.log(inventoryCounts);
+
+const totalInventoryPrice = inventory.reduce(
+  (acc, item) => acc + item.price,
+  0
+);
+console.log(totalInventoryPrice);
