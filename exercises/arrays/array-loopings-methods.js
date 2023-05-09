@@ -208,7 +208,7 @@ const cleanPeople = people.map(function (person) {
 console.table(cleanPeople);
 
 //FILTER AND FIND
-
+// FILTER WILL RETURN EVERYTHING THAT MEETS THE CRITERIA
 const over40 = cleanPeople.filter((person) => person.age > 40);
 console.table(over40);
 
@@ -217,5 +217,36 @@ if (over40.length) {
 }
 //FIND WILL ONLY RETURN ONE ITEM
 
+function findById(id) {
+  return function isStudent(student) {
+    return student.id === id;
+  };
+}
+
+function findByProp(prop, propWeAreLookingFor) {
+  //Very flexible find function
+  return function isStudent(student) {
+    return student[prop] === propWeAreLookingFor;
+  };
+}
 const student = students.find((learner) => learner.id === '565a');
 console.log(student);
+
+const student2 = students.find(findById('565a'));
+console.log(student2);
+
+const student3 = students.find(findByProp('id', '565a'));
+console.log(student3);
+
+const student4 = students.find(findByProp('first_name', 'Micki'));
+console.log(student4);
+
+console.clear();
+
+//Reduce - Will combine
+//VERBOSE
+let total = 0;
+orderTotals.forEach((singleTotal) => {
+  total = total + singleTotal;
+});
+console.log(total);
