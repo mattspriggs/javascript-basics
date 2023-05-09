@@ -198,6 +198,24 @@ const cleanPeople = people.map(function (person) {
 
   //Figure out how old they are
   const age = Math.floor((now - birthday) / 31536000000);
-  console.log(age);
+
   //   return their full name and BDay in object
+  return {
+    age, //Same as age: age
+    name: `${person.names.first} ${person.names.last}`,
+  };
 });
+console.table(cleanPeople);
+
+//FILTER AND FIND
+
+const over40 = cleanPeople.filter((person) => person.age > 40);
+console.table(over40);
+
+if (over40.length) {
+  console.log('There are people over 40 in this array.');
+}
+//FIND WILL ONLY RETURN ONE ITEM
+
+const student = students.find((learner) => learner.id === '565a');
+console.log(student);
