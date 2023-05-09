@@ -73,3 +73,6 @@ while (cool === true) {
   }
 }
 //Do While Loop
+// do{
+//Will run once without checking the condition
+// }while() - will run until the condition is false
