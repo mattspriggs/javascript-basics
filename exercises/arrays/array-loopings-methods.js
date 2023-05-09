@@ -250,3 +250,12 @@ orderTotals.forEach((singleTotal) => {
   total = total + singleTotal;
 });
 console.log(total);
+
+function tallyNumbers(tally, currentTotal) {
+  console.log(`The current tally is ${tally}`);
+  console.log(`The current total is ${currentTotal}`);
+  console.log('-------------');
+  //   return the current tally PLUS the amount of this order
+  return tally + currentTotal; //Have to return the accumulator value for it to combine all items in the array
+}
+const allOrders = orderTotals.reduce(tallyNumbers, 0);
