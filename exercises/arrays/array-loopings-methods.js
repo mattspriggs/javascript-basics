@@ -161,6 +161,8 @@ toppings.forEach(logTopping); //Will not return anything, just iterates somethin
 // });
 
 //MAP, FILTER, REDUCE
+
+// MAP - CAN BE USED WITH ANY KIND OF DATA
 console.clear();
 function addArms(face) {
   return `👋 ${face} 👋`;
@@ -184,3 +186,18 @@ const fullNames3 = ['wes', 'kait', 'poppy'].map(capitalize).map(bosify);
 console.log(fullNames);
 console.log(fullNames2);
 console.log(fullNames3);
+
+const taxRate = 13;
+const orderTotalWithTax = orderTotals.map((total) => total * 1.15);
+console.log(orderTotalWithTax);
+
+const cleanPeople = people.map(function (person) {
+  //get their BDay - Timestamp
+  const birthday = new Date(person.birthday).getTime();
+  const now = Date.now(); //Current timestamp
+
+  //Figure out how old they are
+  const age = Math.floor((now - birthday) / 31536000000);
+  console.log(age);
+  //   return their full name and BDay in object
+});
