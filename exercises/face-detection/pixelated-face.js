@@ -11,7 +11,21 @@ const faceCanvas = document.querySelector('.face');
 const faceCtx = faceCanvas.getContext('2d');
 
 const faceDetector = new window.FaceDetector({ fastMode: true });
-const SIZE = 10;
+const optionsInputs = document.querySelectorAll(
+  '.controls input[type="range"]'
+);
+
+const options = {
+  SIZE: 10,
+  SCALE: 1.6,
+};
+
+function handleOption(event) {
+  console.log(event.currentTarget.value);
+  const { value, name } = event.currentTarget;
+  options[name] = parseFloat(value);
+}
+optionsInputs.forEach((input) => input.addEventListener('input', handleOption));
 //Write a function that will populate the users video
 async function populateVideo() {
   const stream = await navigator.mediaDevices.getUserMedia({
@@ -44,7 +58,9 @@ function drawFace(face) {
 }
 
 function censor({ boundingBox: face }) {
-  //Draw teh small face
+  faceCtx.imageSmoothingEnabled = false;
+  faceCtx.clearRect(0, 0, faceCanvas.width, faceCanvas.height);
+  //Draw the small face
   faceCtx.drawImage(
     //5 source arguments
     video, //where does the source come from?
@@ -55,21 +71,23 @@ function censor({ boundingBox: face }) {
     //4 draw arguments
     face.x, //Where do we start drawing?
     face.y,
-    SIZE,
-    SIZE
+    options.SIZE,
+    options.SIZE
   );
   //Take the small face and draw in large space
+  const width = face.width * options.SCALE;
+  const height = face.height * options.SCALE;
   faceCtx.drawImage(
     faceCanvas, //Source
     face.x, //Where do we start the source pull from
     face.y,
-    SIZE,
-    SIZE,
+    options.SIZE,
+    options.SIZE,
     //Drawing arguments
-    face.x,
-    face.y,
-    face.width,
-    face.height
+    face.x - (width - face.width) / options.SCALE,
+    face.y - (height - face.height) / options.SCALE,
+    width,
+    height
   );
 }
 populateVideo().then(detect);
