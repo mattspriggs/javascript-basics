@@ -30,7 +30,11 @@ async function detect() {
     const faces = await faceDetector.detect(video);
     console.log(faces.length);
     //ask the browser when the next animation frame is and tell it to run detect for us
+    faces.forEach(drawFace);
     requestAnimationFrame(detect); //recursion function - function calls itself
+}
+function drawFace(face) {
+    console.log(face);
 }
 populateVideo().then(detect);
 
