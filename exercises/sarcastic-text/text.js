@@ -1,6 +1,6 @@
 const textarea = document.querySelector('[name="text"]');
 const result = document.querySelector('.result');
-const filterInputs = document.querySelectorAll('[name="filter"]');
+const filterInputs = Array.from(document.querySelectorAll('[name="filter"]'));
 
 // console.log(textArea);
 // console.log(result);
@@ -19,9 +19,11 @@ const filters = {
   unable: function () {},
 };
 function transformText(text) {
+  // const filter = document.querySelector('[name="filter"]:checked').value;
+  // OR - for better performance
+  const filter = filterInputs.find((input) => input.checked).value;
   //take the text and loop over each letter
-  const mod = Array.from(text).map(filters.sarcastic);
-  console.log(mod);
+  const mod = Array.from(text).map(filters[filter]);
   result.textContent = mod.join('');
 }
 
