@@ -8,6 +8,34 @@ function Gallery(gallery) {
   // one modal open at a time
   const prevButton = modal.querySelector('.prev');
   const nextButton = modal.querySelector('.next');
+  let currentImage;
+
+  function openModal() {
+    console.info('Opening Modal...');
+    //Check if the modal is already open
+    if (modal.matches('.open')) {
+      console.info('Modal already open');
+      return;
+    }
+    modal.classList.add('open');
+  }
+  function showImage(el) {
+    if (!el) {
+      console.info('No image to show');
+      return;
+    }
+    //Update the modal with the image that is passed in
+    console.log(el);
+    modal.querySelector('img').src = el.src;
+    modal.querySelector('h2').textContent = el.title;
+    modal.querySelector('figure p').textContent = el.dataset.description;
+    currentImage = el;
+    openModal();
+  }
+
+  images.forEach((image) =>
+    image.addEventListener('click', (event) => showImage(event.currentTarget))
+  );
 }
 
 //Use it on the page
