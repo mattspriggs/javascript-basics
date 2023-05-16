@@ -123,6 +123,24 @@ var list = document.querySelector('.list');
 
 //We need an array to hold out state
 var items = [];
+function handleSubmit(e) {
+  e.preventDefault();
+  console.log('Submitted!!!');
+  var name = e.currentTarget.item.value;
+  var item = {
+    name: name,
+    id: Date.now(),
+    complete: false
+  };
+  //Push items into state
+  items.push(item);
+  console.log("There are now ".concat(items.length, " in your state"));
+  //clear the form
+  //e.currentTarget.item.value = ''
+  e.target.reset(); //best for multiple inputs
+}
+
+shoppingForm.addEventListener('submit', handleSubmit);
 },{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
