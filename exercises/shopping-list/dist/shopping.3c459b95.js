@@ -138,8 +138,15 @@ function handleSubmit(e) {
   //clear the form
   //e.currentTarget.item.value = ''
   e.target.reset(); //best for multiple inputs
+  displayItems();
 }
-
+function displayItems() {
+  console.log(items);
+  var html = items.map(function (item) {
+    return "<li class=\"shopping-item\">\n\t\t".concat(item.name, "\n\t</li>");
+  }).join('');
+  list.innerHTML = html;
+}
 shoppingForm.addEventListener('submit', handleSubmit);
 },{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

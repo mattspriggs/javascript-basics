@@ -19,6 +19,18 @@ function handleSubmit(e) {
   //clear the form
   //e.currentTarget.item.value = ''
   e.target.reset(); //best for multiple inputs
+  displayItems();
 }
 
+function displayItems() {
+  console.log(items);
+  const html = items
+    .map(
+      (item) => `<li class="shopping-item">
+		${item.name}
+	</li>`
+    )
+    .join('');
+  list.innerHTML = html;
+}
 shoppingForm.addEventListener('submit', handleSubmit);
