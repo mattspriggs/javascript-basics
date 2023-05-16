@@ -1,6 +1,8 @@
+// functions as arguments
+
 const textarea = document.querySelector('[name="text"]');
 const result = document.querySelector('.result');
-const filterInputs = Array.from(document.querySelectorAll('[name="filter"]'));
+const filterInputs = document.querySelectorAll('[name="filter"]');
 
 /* eslint-disable */
 const funkyLetters = {
@@ -74,34 +76,28 @@ const funkyLetters = {
 };
 /* eslint-enable */
 
-// console.log(textArea);
-// console.log(result);
-// console.log(filterInputs);
-
 const filters = {
-  sarcastic: function (letter, index) {
-    //if it is odd, it will return 1 and that is truthy so this statement will trip
+  sarcastic(letter, index) {
     if (index % 2) {
       return letter.toUpperCase();
     }
-    // if it is even it will return zero and it will lowercase it
     return letter.toLowerCase();
   },
-  funky: function (letter) {
-    //first check if there is a funky letter for this case
+  funky(letter, index) {
+    // first check if there is a letter in this case
     let funkyLetter = funkyLetters[letter];
-    if (funkyLetter) {
-      return funkyLetter;
+    console.log(funkyLetter);
+    if (!funkyLetter) {
+      // then check for a lowercase version
+      funkyLetter = funkyLetters[letter.toLowerCase()];
     }
-    //if there is not, check if there is a lowercase version
-    funkyLetter = funkyLetters[letter.toLowerCase()];
-    if (funkyLetter) {
-      return funkyLetter;
+    // if we still don't have something, just use the regular letter
+    if (!funkyLetter) {
+      funkyLetter = letter;
     }
-    //if there is nothing, return regular letter
-    return letter;
+    return funkyLetter;
   },
-  unable: function (letter) {
+  unable(letter) {
     const random = Math.floor(Math.random() * 3);
     if (letter === ' ' && random === 2) {
       return '...';
@@ -109,18 +105,15 @@ const filters = {
     return letter;
   },
 };
-function transformText(text) {
-  // const filter = document.querySelector('[name="filter"]:checked').value;
-  // OR - for better performance
-  const filter = filterInputs.find((input) => input.checked).value;
-  //take the text and loop over each letter
-  const mod = Array.from(text).map(filters[filter]);
-  result.textContent = mod.join('');
+
+function handleInput(text) {
+  const filter = document.querySelector('[name="filter"]:checked').value;
+  const mod = Array.from(text).map(filters[filter]).join('');
+  result.textContent = mod;
 }
 
-textarea.addEventListener('input', (e) => transformText(e.target.value));
+textarea.addEventListener('input', (e) => handleInput(e.target.value));
+
 filterInputs.forEach((input) =>
-  input.addEventListener('input', () => {
-    transformText(textarea.value);
-  })
+  input.addEventListener('input', () => handleInput(textarea.value))
 );
