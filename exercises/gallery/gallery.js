@@ -6,6 +6,8 @@ function Gallery(gallery) {
   const images = Array.from(gallery.querySelectorAll('img'));
   const modal = document.querySelector('.modal'); //Using document because it can be shared since there can only be
   // one modal open at a time
+  const prevButton = modal.querySelector('.prev');
+  const nextButton = modal.querySelector('.next');
 }
 
 //Use it on the page
