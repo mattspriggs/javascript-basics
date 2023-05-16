@@ -2,7 +2,7 @@ const shoppingForm = document.querySelector('.shopping');
 const list = document.querySelector('.list');
 
 //We need an array to hold out state
-const items = [];
+let items = [];
 
 function handleSubmit(e) {
   e.preventDefault();
@@ -32,9 +32,16 @@ function displayItems() {
   const html = items
     .map(
       (item) => `<li class="shopping-item">
-		<input type="checkbox">
+		<input 
+		value="${item.id}" 
+		type="checkbox"
+		${item.complete ? 'checked' : ''}
+		>
 		<span class="itemName">${item.name}</span>
-		<button aria-label="Remove ${item.name}">&times</button>
+		<button 
+		aria-label="Remove ${item.name}"
+		value="${item.id}"
+		>&times</button>
 	</li>`
     )
     .join('');
@@ -46,6 +53,44 @@ function mirrorToLocalStorage() {
   localStorage.setItem('items', JSON.stringify(items)); //since it is an object it must use the JSON stringify
   // instead of .toString() method - otherwise it will just be object Object with no data
 }
+
+function restoreFromLocalStorage() {
+  console.info('Restoring from local storage');
+  const lsItems = JSON.parse(localStorage.getItem('items'));
+  if (lsItems.length) {
+    // items = lsItems;
+    // lsItems.forEach((item) => items.push(item)); OR
+    items.push(...lsItems);
+    list.dispatchEvent(new CustomEvent('itemsUpdated'));
+  }
+}
+function deleteItem(id) {
+  console.log('DELETING ITEM', id);
+  //update without the item with this id
+  items = items.filter((item) => item.id !== id);
+  console.log(items);
+  list.dispatchEvent(new CustomEvent('itemsUpdated'));
+}
+
+function markAsPurchased(id) {
+  console.log('Marking as purchased');
+  const itemRef = items.find((item) => item.id === id);
+  itemRef.complete = !itemRef.complete;
+  list.dispatchEvent(new CustomEvent('itemsUpdated'));
+}
 shoppingForm.addEventListener('submit', handleSubmit);
 list.addEventListener('itemsUpdated', displayItems);
 list.addEventListener('itemsUpdated', mirrorToLocalStorage);
+// event delegation : we listen for the click on the list <ul> but then delegate the click to the button if that was
+// what was clicked
+list.addEventListener('click', function (e) {
+  const id = parseInt(e.target.value);
+  if (e.target.matches('button')) {
+    //DELEGATION
+    deleteItem(id);
+  }
+  if (e.target.matches('input[type="checkbox')) {
+    markAsPurchased(id);
+  }
+});
+restoreFromLocalStorage();

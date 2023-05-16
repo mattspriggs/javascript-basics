@@ -118,6 +118,12 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"shopping.js":[function(require,module,exports) {
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 var shoppingForm = document.querySelector('.shopping');
 var list = document.querySelector('.list');
 
@@ -148,7 +154,7 @@ function handleSubmit(e) {
 function displayItems() {
   console.log(items);
   var html = items.map(function (item) {
-    return "<li class=\"shopping-item\">\n\t\t<input type=\"checkbox\">\n\t\t<span class=\"itemName\">".concat(item.name, "</span>\n\t\t<button aria-label=\"Remove ").concat(item.name, "\">&times</button>\n\t</li>");
+    return "<li class=\"shopping-item\">\n\t\t<input \n\t\tvalue=\"".concat(item.id, "\" \n\t\ttype=\"checkbox\"\n\t\t").concat(item.complete ? 'checked' : '', "\n\t\t>\n\t\t<span class=\"itemName\">").concat(item.name, "</span>\n\t\t<button \n\t\taria-label=\"Remove ").concat(item.name, "\"\n\t\tvalue=\"").concat(item.id, "\"\n\t\t>&times</button>\n\t</li>");
   }).join('');
   list.innerHTML = html;
 }
@@ -158,9 +164,50 @@ function mirrorToLocalStorage() {
   // instead of .toString() method - otherwise it will just be object Object with no data
 }
 
+function restoreFromLocalStorage() {
+  console.info('Restoring from local storage');
+  var lsItems = JSON.parse(localStorage.getItem('items'));
+  if (lsItems.length) {
+    var _items;
+    // items = lsItems;
+    // lsItems.forEach((item) => items.push(item)); OR
+    (_items = items).push.apply(_items, _toConsumableArray(lsItems));
+    list.dispatchEvent(new CustomEvent('itemsUpdated'));
+  }
+}
+function deleteItem(id) {
+  console.log('DELETING ITEM', id);
+  //update without the item with this id
+  items = items.filter(function (item) {
+    return item.id !== id;
+  });
+  console.log(items);
+  list.dispatchEvent(new CustomEvent('itemsUpdated'));
+}
+function markAsPurchased(id) {
+  console.log('Marking as purchased');
+  var itemRef = items.find(function (item) {
+    return item.id === id;
+  });
+  itemRef.complete = !itemRef.complete;
+  list.dispatchEvent(new CustomEvent('itemsUpdated'));
+}
 shoppingForm.addEventListener('submit', handleSubmit);
 list.addEventListener('itemsUpdated', displayItems);
 list.addEventListener('itemsUpdated', mirrorToLocalStorage);
+// event delegation : we listen for the click on the list <ul> but then delegate the click to the button if that was
+// what was clicked
+list.addEventListener('click', function (e) {
+  var id = parseInt(e.target.value);
+  if (e.target.matches('button')) {
+    //DELEGATION
+    deleteItem(id);
+  }
+  if (e.target.matches('input[type="checkbox')) {
+    markAsPurchased(id);
+  }
+});
+restoreFromLocalStorage();
 },{}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
