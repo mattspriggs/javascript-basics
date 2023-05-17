@@ -22,6 +22,7 @@ function Gallery(gallery) {
     //EVENT LISTENERS TO BE BOUND TO THE MODAL
     window.addEventListener('keyup', handleKeyUp);
     nextButton.addEventListener('click', showNextImage);
+    prevButton.addEventListener('click', showPrevImage);
   }
   function showImage(el) {
     if (!el) {
@@ -38,7 +39,10 @@ function Gallery(gallery) {
   }
 
   function showNextImage() {
-    console.log(currentImage.nextElementSibling);
+    showImage(currentImage.nextElementSibling || gallery.firstElementChild);
+  }
+  function showPrevImage() {
+    showImage(currentImage.previousElementSibling || gallery.lastElementChild);
   }
   function closeModal() {
     modal.classList.remove('open');
