@@ -18,6 +18,10 @@ function Gallery(gallery) {
       return;
     }
     modal.classList.add('open');
+
+    //EVENT LISTENERS TO BE BOUND TO THE MODAL
+    window.addEventListener('keyup', handleKeyUp);
+    nextButton.addEventListener('click', showNextImage);
   }
   function showImage(el) {
     if (!el) {
@@ -33,9 +37,30 @@ function Gallery(gallery) {
     openModal();
   }
 
+  function showNextImage() {
+    console.log(currentImage.nextElementSibling);
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    //TODO: add event listeners for clicks and keyboards
+    window.removeEventListener('keyup', handleKeyUp);
+    nextButton.removeEventListener('click', showNextImage);
+  }
+  function handleClickOutside(event) {
+    if (event.target === event.currentTarget) {
+      closeModal();
+    }
+  }
+
+  function handleKeyUp(event) {
+    if (event.key === 'Escape') closeModal();
+  }
+
+  //EVENT LISTENERS
   images.forEach((image) =>
     image.addEventListener('click', (event) => showImage(event.currentTarget))
   );
+  modal.addEventListener('click', handleClickOutside);
 }
 
 //Use it on the page
