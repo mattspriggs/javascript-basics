@@ -49,6 +49,7 @@ function Gallery(gallery) {
     //TODO: add event listeners for clicks and keyboards
     window.removeEventListener('keyup', handleKeyUp);
     nextButton.removeEventListener('click', showNextImage);
+    prevButton.removeEventListener('click', showPrevImage);
   }
   function handleClickOutside(event) {
     if (event.target === event.currentTarget) {
@@ -57,13 +58,23 @@ function Gallery(gallery) {
   }
 
   function handleKeyUp(event) {
-    if (event.key === 'Escape') closeModal();
+    if (event.key === 'Escape') return closeModal();
+    if (event.key === 'ArrowRight') return showNextImage();
+    if (event.key === 'ArrowLeft') return showPrevImage();
   }
 
   //EVENT LISTENERS
   images.forEach((image) =>
     image.addEventListener('click', (event) => showImage(event.currentTarget))
   );
+  //Loop over each image and listen for a keyup with an enter key to open if the user presses it
+  images.forEach((image) => {
+    image.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        showImage(e.currentTarget);
+      }
+    });
+  });
   modal.addEventListener('click', handleClickOutside);
 }
 
