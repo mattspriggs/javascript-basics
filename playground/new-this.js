@@ -25,16 +25,25 @@ function Pizza(toppings = [], customer) {
   this.customer = customer;
   this.id = Math.floor(Math.random() * 16777215).toString(16);
   this.slices = 10;
-  this.eat = function () {
-    //Should be outside and not inside the pizza, place in the prototype - performance issue
-    if (this.slices > 0) {
-      this.slices = this.slices - 1;
-      console.log(`CHOMP you now have ${this.slices} slices left`);
-    } else {
-      console.log(`Sorry, you have no slices left...`);
-    }
-  };
+  // this.eat = function () {
+  //   //Should be outside and not inside the pizza, place in the prototype - performance issue
+  //   if (this.slices > 0) {
+  //     this.slices = this.slices - 1;
+  //     console.log(`CHOMP you now have ${this.slices} slices left`);
+  //   } else {
+  //     console.log(`Sorry, you have no slices left...`);
+  //   }
+  // };
 }
+
+Pizza.prototype.eat = function () {
+  if (this.slices > 0) {
+    this.slices = this.slices - 1;
+    console.log(`CHOMP you now have ${this.slices} slices left`);
+  } else {
+    console.log(`Sorry, you have no slices left...`);
+  }
+};
 
 const pepperoniPizza = Pizza();
 console.log(pepperoniPizza); //Is undefined
