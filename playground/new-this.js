@@ -65,6 +65,7 @@ Pizza.prototype.describe = function () {
     ', '
   )} and ${this.slices} slices are left`;
 };
+
 const pepperoniPizza = Pizza();
 console.log(pepperoniPizza); //Is undefined
 const pepperoniPizza2 = new Pizza(['pepperoni'], 'Wes Bos');
