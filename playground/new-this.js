@@ -17,6 +17,21 @@ console.log(span.constructor);
 console.log(span instanceof HTMLSpanElement);
 console.log(span instanceof Node);
 
+String.prototype.sarcastic = function () {
+  //Example of prototype modification - DO NOT DO ON BUILT INS
+  //make sarcastic
+  const sarcastic = this.split('')
+    .map((char, i) => {
+      if (i % 2) {
+        return char.toUpperCase();
+      } else {
+        return char.toLowerCase();
+      }
+    })
+    .join('');
+  return sarcastic;
+};
+
 function Pizza(toppings = [], customer) {
   //CONSTRUCTOR
   console.log('Making a new pizza');
@@ -45,6 +60,11 @@ Pizza.prototype.eat = function () {
   }
 };
 
+Pizza.prototype.describe = function () {
+  return `This pizza is for ${this.customer} and has ${this.toppings.join(
+    ', '
+  )} and ${this.slices} slices are left`;
+};
 const pepperoniPizza = Pizza();
 console.log(pepperoniPizza); //Is undefined
 const pepperoniPizza2 = new Pizza(['pepperoni'], 'Wes Bos');
