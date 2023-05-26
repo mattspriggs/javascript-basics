@@ -40,5 +40,14 @@ console.log(total);
 
 const calc = bill.calculate.bind(bill);
 const calc2 = bill.calculate.bind({ total: 500 });
+const calc3 = bill.calculate.bind({ total: 500 }, 0.8); //first argument will always be equal to this
 console.log(calc(0.15));
 console.log(calc2(0.15));
+console.log(calc3());
+
+//Call and Apply
+const total2 = bill.calculate.call({ total: 500 }, 0.8); //binds and runs the function
+console.log(total2);
+
+const total3 = bill.calculate.apply({ total: 500 }, [0.8]); //binds and runs the function with an array of arguments
+console.log(total3);
