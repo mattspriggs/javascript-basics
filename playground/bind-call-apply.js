@@ -34,6 +34,13 @@ const bill = {
   calculate: function (taxRate) {
     return this.total + this.total * taxRate;
   },
+  describe(mealType, drinkType, taxRate) {
+    console.log(
+      `Your meal of ${mealType} with a drink of ${drinkType} was ${this.calculate(
+        taxRate
+      )}`
+    );
+  },
 };
 const total = bill.calculate(0.15);
 console.log(total);
@@ -51,3 +58,8 @@ console.log(total2);
 
 const total3 = bill.calculate.apply({ total: 500 }, [0.8]); //binds and runs the function with an array of arguments
 console.log(total3);
+
+console.log(bill.describe('Pizza', 'Dark Beer', 0.15));
+
+const myMeal = bill.describe.call(bill, 'pizza', 'beer', 0.13);
+console.log(myMeal);
