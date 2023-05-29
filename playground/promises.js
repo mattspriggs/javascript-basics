@@ -56,3 +56,41 @@ makePizza(['pepperoni'])
     console.log('All done! Here is your last pizza -');
     console.log(pizza);
   });
+//Rune them concurrently
+const pizzaPromise1 = makePizza(['hot pepper', 'onion', 'feta']);
+const pizzaPromise2 = makePizza([
+  'hot pepper',
+  'onion',
+  'feta',
+  'ham',
+  'cheese',
+  'pepperoni',
+]);
+const pizzaPromise3 = makePizza(['ham', 'cheese']);
+const dinnerPromise = Promise.all([
+  pizzaPromise1,
+  pizzaPromise2,
+  pizzaPromise3,
+]);
+dinnerPromise.then((pizzas) => {
+  console.log(pizzas);
+});
+const dinnerPromise1 = Promise.all([
+  pizzaPromise1,
+  pizzaPromise2,
+  pizzaPromise3,
+]);
+dinnerPromise1.then(function (pizzas) {
+  const [hottie, garbagePail, hamCheese] = pizzas;
+  console.log(hottie, garbagePail, hamCheese);
+});
+const firstPizzaPromise = Promise.race([
+  pizzaPromise1,
+  pizzaPromise2,
+  pizzaPromise3,
+]);
+firstPizzaPromise.then((pizza) => {
+  //gives the first one that finishes
+  console.log('You must be hungry, here is your first pizza');
+  console.log(pizza);
+});
