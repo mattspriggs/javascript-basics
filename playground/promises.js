@@ -44,7 +44,7 @@ makePizza(['pepperoni'])
   })
   .then(function (pizza) {
     console.log(pizza);
-    return makePizza();
+    return makePizza(['pineapple']);
   })
   .then(function (pizza) {
     console.log(pizza);
@@ -60,7 +60,8 @@ makePizza(['pepperoni'])
   .then((pizza) => {
     console.log('All done! Here is your last pizza -');
     console.log(pizza);
-  });
+  })
+  .catch(handleError); //catches but will break the chain and not complete
 //Rune them concurrently
 const pizzaPromise1 = makePizza(['hot pepper', 'onion', 'feta']);
 const pizzaPromise2 = makePizza([
@@ -100,11 +101,21 @@ firstPizzaPromise.then((pizza) => {
   console.log(pizza);
 });
 
+function handleError(err) {
+  console.log('Oh no!!!');
+  console.log(err);
+}
 makePizza(['cheese', 'pineapple'])
   .then((pizza) => {
     console.log(pizza);
   })
-  .catch((err) => {
-    console.log('Oh no!!!');
-    console.log(err);
-  });
+  .catch(handleError);
+
+const p1 = makePizza(['pepperoni']);
+const p2 = makePizza(['pineapple']);
+
+const dinnerPromise2 = Promise.allSettled([p1, p2]); //returns when all contained promises are fulfilled or rejected
+
+dinnerPromise2.then((results) => {
+  console.log(results);
+});
