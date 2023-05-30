@@ -115,6 +115,7 @@ const p1 = makePizza(['pepperoni']);
 const p2 = makePizza(['pineapple']);
 
 const dinnerPromise2 = Promise.allSettled([p1, p2]); //returns when all contained promises are fulfilled or rejected
+// - promise.all requires a .catch and will break
 
 dinnerPromise2.then((results) => {
   console.log(results);
