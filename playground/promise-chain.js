@@ -9,6 +9,25 @@ const wait = (ms = 0) => new Promise((resolve) => setTimeout(resolve, ms));
 wait(2000).then(() => console.log('Done'));
 const go = document.querySelector('.go');
 
+async function animate2(e) {
+  const el = e.currentTarget;
+  //Change the text to GO when clicked
+  el.innerText = 'GO';
+  //Make it a circle after 2 seconds
+  await wait(2000);
+  el.classList.add('circle');
+  await wait(500); //Make it red after .5 seconds
+  el.classList.add('red');
+  await wait(250); //make it square after .25 seconds
+  el.classList.remove('circle');
+  el.classList.add('square');
+  await wait(300); //make it purple after .3 seconds
+  el.classList.remove('red');
+  el.classList.add('purple');
+  await wait(500); //fade out after .5 seconds
+  el.classList.add('fade');
+}
+
 function animate(e) {
   const el = e.currentTarget;
   //Change the text to GO when clicked
@@ -38,7 +57,7 @@ function animate(e) {
     });
 }
 
-go.addEventListener('click', animate);
+go.addEventListener('click', animate2);
 
 go.addEventListener('clickxxx', function (e) {
   const el = e.currentTarget;
