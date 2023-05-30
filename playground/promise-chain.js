@@ -4,7 +4,9 @@
 //   console.log('Running...');
 // }, 0); //Will run the callback in 2 seconds - output is Starting/Ending/Running due to async
 // console.log('Ending');
+const wait = (ms = 0) => new Promise((resolve) => setTimeout(resolve, ms));
 
+wait(2000).then(() => console.log('Done'));
 const go = document.querySelector('.go');
 
 go.addEventListener('click', function (e) {
