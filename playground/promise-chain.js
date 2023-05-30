@@ -9,7 +9,38 @@ const wait = (ms = 0) => new Promise((resolve) => setTimeout(resolve, ms));
 wait(2000).then(() => console.log('Done'));
 const go = document.querySelector('.go');
 
-go.addEventListener('click', function (e) {
+function animate(e) {
+  const el = e.currentTarget;
+  //Change the text to GO when clicked
+  el.innerText = 'GO';
+  //Make it a circle after 2 seconds
+  wait(2000)
+    .then(() => {
+      el.classList.add('circle');
+      return wait(500); //Make it red after .5 seconds
+    })
+    .then(() => {
+      el.classList.add('red');
+      return wait(250); //make it square after .25 seconds
+    })
+    .then(() => {
+      el.classList.remove('circle');
+      el.classList.add('square');
+      return wait(300); //make it purple after .3 seconds
+    })
+    .then(() => {
+      el.classList.remove('red');
+      el.classList.add('purple');
+      return wait(500); //fade out after .5 seconds
+    })
+    .then(() => {
+      el.classList.add('fade');
+    });
+}
+
+go.addEventListener('click', animate);
+
+go.addEventListener('clickxxx', function (e) {
   const el = e.currentTarget;
   console.log(el);
   //Change the text to GO when clicked
