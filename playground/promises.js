@@ -1,5 +1,10 @@
 function makePizza(toppings = []) {
   return new Promise(function (resolve, reject) {
+    //Reject if a pizza includes pineapple
+    if (toppings.includes('pineapple')) {
+      reject('Seriously? Get OUT! 🍍');
+    }
+
     const amountOfTimeToBake = 500 + toppings.length * 250;
     //Wait 1 second for the pizza to cook
     setTimeout(function () {
@@ -94,3 +99,12 @@ firstPizzaPromise.then((pizza) => {
   console.log('You must be hungry, here is your first pizza');
   console.log(pizza);
 });
+
+makePizza(['cheese', 'pineapple'])
+  .then((pizza) => {
+    console.log(pizza);
+  })
+  .catch((err) => {
+    console.log('Oh no!!!');
+    console.log(err);
+  });
