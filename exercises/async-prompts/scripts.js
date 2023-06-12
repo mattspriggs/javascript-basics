@@ -79,10 +79,51 @@ const questions = [
   { title: 'What is your dogs name?' },
 ];
 
-const answers = Promise.all([
-  ask(questions[0]),
-  ask(questions[1]),
-  ask(questions[2]),
-]).then((answers) => {
+//Will ask all the questions at once and will fire in order and overlay each other so last appears first
+// const answers = Promise.all([
+//   ask(questions[0]),
+//   ask(questions[1]),
+//   ask(questions[2]),
+// ]).then((answers) => {
+//   console.log(answers);
+// });
+
+//Using map will work but still does not work with animations
+// Promise.all(questions.map(ask)).then((data) => {
+//   console.log(data);
+// });
+
+// questions.forEach(async function (question) {
+//   console.log('Asking a question');
+//   console.log(question);
+//   const answer = await ask(question);
+//   console.log(answer);
+// });
+
+async function asyncMap(array, callback) {
+  //make an array to store our results
+  const results = [];
+  for (const item of array) {
+    // const result = await callback(item);
+    // results.push(result);
+    results.push(await callback(item));
+  }
+  //when done return the results
+  return results;
+}
+
+async function go() {
+  const answers = await asyncMap(questions, ask);
   console.log(answers);
-});
+}
+
+go();
+// async function askMany() {
+//   //the for of loop will work with async to run sequentially - will pause the loop
+//   for (const question of questions) {
+//     const answer = await ask(question);
+//     console.log(answer);
+//   }
+// }
+//
+// askMany();
