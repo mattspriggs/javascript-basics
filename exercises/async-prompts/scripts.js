@@ -72,3 +72,17 @@ async function askQuestion(e) {
 }
 const buttons = document.querySelectorAll('[data-question]');
 buttons.forEach((button) => button.addEventListener('click', askQuestion));
+
+const questions = [
+  { title: 'What is your name?' },
+  { title: 'What is your age?', cancel: true },
+  { title: 'What is your dogs name?' },
+];
+
+const answers = Promise.all([
+  ask(questions[0]),
+  ask(questions[1]),
+  ask(questions[2]),
+]).then((answers) => {
+  console.log(answers);
+});
