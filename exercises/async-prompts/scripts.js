@@ -5,7 +5,9 @@ function wait(ms = 0) {
 async function destroyPopup(popup) {
   popup.classList.remove('open');
   await wait(1000);
-  popup.remove();
+  popup.remove(); //if you do not set the element to null it remains in javascript memory and could be a potential
+  // memory leak
+  popup = null;
 }
 
 function ask(options) {
@@ -49,3 +51,12 @@ function ask(options) {
     popup.classList.add('open');
   });
 }
+
+//select all buttons that have a question
+async function askQuestion(e) {
+  const button = e.currentTarget;
+  const answer = await ask({ title: button.dataset.question });
+  console.log(answer);
+}
+const buttons = document.querySelectorAll('[data-question]');
+buttons.forEach((button) => button.addEventListener('click', askQuestion));
