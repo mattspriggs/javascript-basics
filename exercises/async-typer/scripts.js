@@ -28,9 +28,12 @@ function draw(el) {
   async function drawLetter() {
     el.textContent = text.slice(0, index);
     index += 1;
+    //wait for some time
+    const amountOfTimeToWait = getRandomBetween(typeMin, typeMax);
+    await wait(amountOfTimeToWait);
+    //exit condition
     if (index <= text.length) {
       drawLetter();
-      //wait for some time
     }
   }
   //when this function draw() runs, kick off drawLetter
