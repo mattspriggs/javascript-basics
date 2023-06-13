@@ -7,19 +7,33 @@ function getRandomBetween(min = 20, max = 150, randomNumber = Math.random()) {
 }
 
 //async for of loop
-async function draw(element) {
-  const text = element.textContent;
-  let soFar = '';
-  for (const letter of text) {
-    console.log(letter);
-    soFar += letter;
-    element.textContent = soFar;
-    //wait for time
-    console.log(element.dataset);
-    const { typeMin, typeMax } = element.dataset;
-    const amountOfTimeToWait = getRandomBetween();
-    await wait(amountOfTimeToWait);
-  }
-}
+// async function draw(element) {
+//   const text = element.textContent;
+//   let soFar = '';
+//   for (const letter of text) {
+//     soFar += letter;
+//     element.textContent = soFar;
+//     //wait for some amount of time
+//     const { typeMin, typeMax } = element.dataset;
+//     const amountOfTimeToWait = getRandomBetween(typeMin, typeMax);
+//     await wait(amountOfTimeToWait);
+//   }
+// }
 
+//recursion
+function draw(el) {
+  let index = 1;
+  const text = el.textContent;
+  const { typeMin, typeMax } = el.dataset;
+  async function drawLetter() {
+    el.textContent = text.slice(0, index);
+    index += 1;
+    if (index <= text.length) {
+      drawLetter();
+      //wait for some time
+    }
+  }
+  //when this function draw() runs, kick off drawLetter
+  drawLetter();
+}
 const els = document.querySelectorAll('[data-type]').forEach(draw);
