@@ -7,13 +7,18 @@ function getRandomBetween(min = 20, max = 150, randomNumber = Math.random()) {
 }
 
 //async for of loop
-function draw(element) {
+async function draw(element) {
   const text = element.textContent;
   let soFar = '';
   for (const letter of text) {
     console.log(letter);
     soFar += letter;
-    console.log(soFar);
+    element.textContent = soFar;
+    //wait for time
+    console.log(element.dataset);
+    const { typeMin, typeMax } = element.dataset;
+    const amountOfTimeToWait = getRandomBetween();
+    await wait(amountOfTimeToWait);
   }
 }
 
