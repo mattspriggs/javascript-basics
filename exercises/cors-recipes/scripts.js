@@ -16,3 +16,7 @@ async function fetchRecipes(query) {
 }
 
 fetchRecipes('pizza');
+//C - Cross - CORS policy has to allow you to transfer information and has to be on the server providing the information
+//O - Origin - by default you can not share information between websites
+//R - Resource
+//S - Sharing
