@@ -141,12 +141,15 @@ async function fetchRecipes(query) {
 async function handleSubmit(event) {
   event.preventDefault();
   const el = event.currentTarget;
+  fetchAndDisplay(form.query.value);
+}
+async function fetchAndDisplay(query) {
   //turn the form off
-  el.submit.disabled = true;
+  form.submit.disabled = true;
   //submit the search
-  const recipes = await fetchRecipes(el.query.value);
+  const recipes = await fetchRecipes(query);
   console.log(recipes);
-  el.submit.disabled = false;
+  form.submit.disabled = false;
   displayRecipes(recipes.results);
 }
 function displayRecipes(recipes) {
@@ -160,7 +163,7 @@ function displayRecipes(recipes) {
   recipesGrid.innerHTML = html.join('');
 }
 form.addEventListener('submit', handleSubmit);
-// fetchRecipes('pizza');
+fetchAndDisplay('pizza');
 //C - Cross - CORS policy has to allow you to transfer information and has to be on the server providing the information
 //O - Origin - by default you can not share information between websites
 //R - Resource
