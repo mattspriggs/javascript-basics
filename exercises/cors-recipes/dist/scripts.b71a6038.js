@@ -122,7 +122,10 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 // Please use this replacement API URL "https://recipes.beginnerjavascript.com/api"
 //parameters for API:
 //EXAMPLE
+//http://recipepuppy.com/api?i=onions,garlic&q=omlet&p=3
+//BASE URL
 //http://recipepuppy.com/api
+//OPTIONS
 //? - shows the beginning of a query in the url with parameters
 //i = onions, garlic - ingredient parameters
 //& - joiner for additional options or parameters
