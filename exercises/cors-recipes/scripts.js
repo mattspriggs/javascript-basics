@@ -41,6 +41,7 @@ function displayRecipes(recipes) {
           recipe.thumbnail &&
           `<img src="${recipe.thumbnail}" alt="${recipe.title}"/>`
         }
+        <a href="${recipe.href}">Recipe for ${recipe.title}</a>
     </div>`
   );
   recipesGrid.innerHTML = html.join('');
