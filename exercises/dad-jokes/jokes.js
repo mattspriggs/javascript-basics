@@ -22,11 +22,19 @@ async function fetchJoke() {
 
 function randomItemFromArray(arr, not) {
   const item = arr[Math.floor(Math.random() * arr.length)];
+  if (item === not) {
+    console.log('We used that one last time');
+    return randomItemFromArray(arr, not);
+  }
   return item;
 }
 async function handleClick() {
   const { joke } = await fetchJoke();
   jokeHolder.textContent = joke;
+  jokeButton.textContent = randomItemFromArray(
+    buttonText,
+    jokeButton.textContent
+  );
 }
 
 jokeButton.addEventListener('click', handleClick);
