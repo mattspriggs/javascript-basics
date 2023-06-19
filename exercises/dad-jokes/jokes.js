@@ -16,8 +16,17 @@ async function fetchJoke() {
   const response = await fetch('https://icanhazdadjoke.com', {
     headers: { Accept: 'application/json' },
   });
-  const joke = await response.json();
-  console.log(joke);
+  const data = await response.json();
+  return data;
 }
 
-fetchJoke();
+function randomItemFromArray(arr, not) {
+  const item = arr[Math.floor(Math.random() * arr.length)];
+  return item;
+}
+async function handleClick() {
+  const { joke } = await fetchJoke();
+  jokeHolder.textContent = joke;
+}
+
+jokeButton.addEventListener('click', handleClick);
