@@ -1,5 +1,5 @@
 const jokeButton = document.querySelector('.getJoke');
-const jokeSpan = jokeButton.querySelector('.jokeText');
+const jokeButtonSpan = jokeButton.querySelector('.jokeText');
 const jokeHolder = document.querySelector('.joke p');
 const loader = document.querySelector('.loader');
 
@@ -37,9 +37,9 @@ function randomItemFromArray(arr, not) {
 async function handleClick() {
   const { joke } = await fetchJoke();
   jokeHolder.textContent = joke;
-  jokeButton.textContent = randomItemFromArray(
+  jokeButtonSpan.textContent = randomItemFromArray(
     buttonText,
-    jokeButton.textContent
+    jokeButtonSpan.textContent
   );
 }
 
