@@ -32,3 +32,27 @@ const currencies = {
   ZAR: 'South African Rand',
   EUR: 'Euro',
 };
+
+// const myHeaders = new Headers();
+// myHeaders.append('apikey', 'lBrQXKtTy60IwWLs1y7mjcD1VM3G6Pfl');
+// const requestOptions = {
+//   method: 'GET',
+//   redirect: 'follow',
+//   headers: myHeaders,
+// };
+// fetch(
+//   `https://api.apilayer.com/exchangerates_data/latest?symbols={symbols}&base={base}`,
+//   requestOptions
+// )
+//   .then((response) => response.text())
+//   .then((result) => console.log(result))
+//   .catch((error) => console.log('error', error));
+
+function generateOptions(options) {
+  return Object.entries(options).map(
+    ([currencyCode, currencyName]) =>
+      `<option value="${currencyCode}">${currencyCode} - ${currencyName}</option>`
+  );
+}
+const optionsHTML = generateOptions(currencies);
+console.log(optionsHTML);
