@@ -1,3 +1,5 @@
+const fromSelect = document.querySelector('[name="from_currency"]');
+const toSelect = document.querySelector('[name="to_currency"]');
 const currencies = {
   USD: 'United States Dollar',
   AUD: 'Australian Dollar',
@@ -49,10 +51,14 @@ const currencies = {
 //   .catch((error) => console.log('error', error));
 
 function generateOptions(options) {
-  return Object.entries(options).map(
-    ([currencyCode, currencyName]) =>
-      `<option value="${currencyCode}">${currencyCode} - ${currencyName}</option>`
-  );
+  return Object.entries(options)
+    .map(
+      ([currencyCode, currencyName]) =>
+        `<option value="${currencyCode}">${currencyCode} - ${currencyName}</option>`
+    )
+    .join('');
 }
 const optionsHTML = generateOptions(currencies);
-console.log(optionsHTML);
+//populate the options on page load
+fromSelect.innerHTML = optionsHTML;
+toSelect.innerHTML = optionsHTML;
