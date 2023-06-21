@@ -1,6 +1,7 @@
 const fromSelect = document.querySelector('[name="from_currency"]');
 const toSelect = document.querySelector('[name="to_currency"]');
 const endpoint = 'https://api.apilayer.com/exchangerates_data/latest';
+const ratesByBase = {};
 const currencies = {
   USD: 'United States Dollar',
   AUD: 'Australian Dollar',
@@ -73,7 +74,19 @@ async function fetchRates(base = 'USD') {
   const res = await fetch(`${endpoint}?base=${base}`, requestOptions);
   const rates = await res.json();
   return rates;
-  console.log(rates);
+}
+
+async function convert(amount, from, to) {
+  //first check to see if we have the rates to convert from
+  if (!ratesByBase[from]) {
+    console.log(
+      `Oh no, we do not have ${from} to convert to ${to}. So lets go get it!`
+    );
+    const rates = await fetchRates(from);
+    console.log(rates);
+    //store them for next time
+    ratesByBase[from] = rates;
+  }
 }
 const optionsHTML = generateOptions(currencies);
 //populate the options on page load
