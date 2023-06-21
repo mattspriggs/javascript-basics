@@ -1,5 +1,6 @@
 const fromSelect = document.querySelector('[name="from_currency"]');
 const toSelect = document.querySelector('[name="to_currency"]');
+const endpoint = 'https://api.apilayer.com/exchangerates_data/latest';
 const currencies = {
   USD: 'United States Dollar',
   AUD: 'Australian Dollar',
@@ -36,12 +37,21 @@ const currencies = {
 };
 
 // const myHeaders = new Headers();
-// myHeaders.append('apikey', 'lBrQXKtTy60IwWLs1y7mjcD1VM3G6Pfl');
+// myHeaders.append('apikey', API_KEY);
 // const requestOptions = {
 //   method: 'GET',
 //   redirect: 'follow',
 //   headers: myHeaders,
 // };
+
+const myHeaders = new Headers();
+myHeaders.append('apikey', '');
+
+const requestOptions = {
+  method: 'GET',
+  redirect: 'follow',
+  headers: myHeaders,
+};
 // fetch(
 //   `https://api.apilayer.com/exchangerates_data/latest?symbols={symbols}&base={base}`,
 //   requestOptions
@@ -57,6 +67,13 @@ function generateOptions(options) {
         `<option value="${currencyCode}">${currencyCode} - ${currencyName}</option>`
     )
     .join('');
+}
+
+async function fetchRates(base = 'USD') {
+  const res = await fetch(`${endpoint}?base=${base}`, requestOptions);
+  const rates = await res.json();
+  return rates;
+  console.log(rates);
 }
 const optionsHTML = generateOptions(currencies);
 //populate the options on page load
