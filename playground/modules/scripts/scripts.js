@@ -1,4 +1,4 @@
-import { returnHi } from '/playground/modules/utils/utils.js';
+import { returnHi } from '/utils/utils.js';
 
 console.log('it works');
 console.log(returnHi('matt'));
