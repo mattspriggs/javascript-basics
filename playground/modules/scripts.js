@@ -1,4 +1,4 @@
-import { returnHi } from '../index.html';
+import { returnHi } from './index.html';
 
 console.log('it works');
 console.log(returnHi(matt));
