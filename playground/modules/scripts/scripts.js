@@ -5,6 +5,8 @@ import mondo, { returnHi as sayHi, last, middle } from '/utils/utils.js'; //name
 // export but is the only thing exported from the wes.js file
 import * as everything from '/scripts/wes.js'; //will bring in everything from the module - can be named anything you
 // want,not limited to everything
+import { handleButttonClick } from '../utils/handlers.js';
+
 const name = 'matt';
 
 // console.log(returnHi(name));
@@ -14,3 +16,6 @@ console.log(last, middle);
 // console.log(fubar);
 console.log(mondo);
 console.log(everything);
+
+const button = document.querySelector('button');
+button.addEventListener('click', handleButttonClick);
