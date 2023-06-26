@@ -33,3 +33,5 @@ const currencies = {
   EUR: 'Euro',
 };
 export default currencies;
+
+export const localCurrency = 'NZD';

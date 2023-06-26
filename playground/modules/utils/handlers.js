@@ -1,5 +1,8 @@
 //import currencies from '../scripts/currencies.js';
 export async function handleButttonClick(event) {
-  const currenciesModule = await import('/scripts/currencies.js');
-  console.log(currenciesModule.default);
+  const { localCurrency, default: currency } = await import(
+    //default:currency renames the reserved word of default to currency
+    '/scripts/currencies.js'
+  );
+  console.log(localCurrency, currency);
 }
