@@ -7,3 +7,5 @@ export function returnHi(name) {
 }
 //NAMED EXPORTS -  can have as many as you want
 export { last, middle };
+const first = 'Matthew';
+export default first; //can have a default export in addition to named exports

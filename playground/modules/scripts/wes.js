@@ -3,3 +3,9 @@ const person = {
   last: 'Bos',
 };
 export default person;
+
+export const dog = 'Snickers';
+export const food = 'Pizza';
+export function eat() {
+  console.log('chomp chomp nom nom');
+}
