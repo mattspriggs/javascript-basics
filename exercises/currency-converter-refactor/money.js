@@ -1,5 +1,6 @@
 import { currencies } from './src/currencies.js';
 import fetchRates from './src/fetch-rates.js';
+import { formatCurrency } from './utils/utils.js';
 
 const fromSelect = document.querySelector('[name="from_currency"]');
 const fromInput = document.querySelector('[name="from_amount"]');
@@ -52,12 +53,6 @@ async function convert(amount, from, to) {
   return convertedAmount;
 }
 
-function formatCurrency(amount, currency) {
-  return Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency,
-  }).format(amount);
-}
 async function handleInput(e) {
   const rawAmount = await convert(
     fromInput.value,
