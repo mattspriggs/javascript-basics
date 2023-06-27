@@ -1,6 +1,7 @@
 import { currencies } from './src/currencies.js';
 import fetchRates from './src/fetch-rates.js';
 import { handleInput } from './utils/handlers.js';
+import { generateOptions } from './utils/utils.js';
 
 const fromSelect = document.querySelector('[name="from_currency"]');
 const toSelect = document.querySelector('[name="to_currency"]');
@@ -23,15 +24,6 @@ const form = document.querySelector('.app form');
 //   .then((response) => response.text())
 //   .then((result) => console.log(result))
 //   .catch((error) => console.log('error', error));
-
-function generateOptions(options) {
-  return Object.entries(options)
-    .map(
-      ([currencyCode, currencyName]) =>
-        `<option value="${currencyCode}">${currencyCode} - ${currencyName}</option>`
-    )
-    .join('');
-}
 
 export async function convert(amount, from, to) {
   //first check to see if we have the rates to convert from
