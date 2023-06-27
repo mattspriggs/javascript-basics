@@ -1,10 +1,6 @@
 import { formatCurrency } from './utils.js';
-import { convert } from '../money.js';
-
-const fromInput = document.querySelector('[name="from_amount"]');
-const toEl = document.querySelector('.to_amount');
-const fromSelect = document.querySelector('[name="from_currency"]');
-const toSelect = document.querySelector('[name="to_currency"]');
+import { convert } from '../src/convert.js';
+import { fromInput, fromSelect, toSelect, toEl } from '../src/elements.js';
 
 export async function handleInput(e) {
   const rawAmount = await convert(
