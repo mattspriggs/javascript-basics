@@ -1,10 +1,11 @@
 import { currencies } from './src/currencies.js';
+import fetchRates from './src/fetch-rates.js';
 
 const fromSelect = document.querySelector('[name="from_currency"]');
 const fromInput = document.querySelector('[name="from_amount"]');
 const toSelect = document.querySelector('[name="to_currency"]');
 const toEl = document.querySelector('.to_amount');
-const endpoint = 'https://api.apilayer.com/exchangerates_data/latest';
+
 const ratesByBase = {};
 const form = document.querySelector('.app form');
 
@@ -16,14 +17,6 @@ const form = document.querySelector('.app form');
 //   headers: myHeaders,
 // };
 
-const myHeaders = new Headers();
-myHeaders.append('apikey', '');
-
-const requestOptions = {
-  method: 'GET',
-  redirect: 'follow',
-  headers: myHeaders,
-};
 // fetch(
 //   `https://api.apilayer.com/exchangerates_data/latest?symbols={symbols}&base={base}`,
 //   requestOptions
@@ -39,12 +32,6 @@ function generateOptions(options) {
         `<option value="${currencyCode}">${currencyCode} - ${currencyName}</option>`
     )
     .join('');
-}
-
-async function fetchRates(base = 'USD') {
-  const res = await fetch(`${endpoint}?base=${base}`, requestOptions);
-  const rates = await res.json();
-  return rates;
 }
 
 async function convert(amount, from, to) {
