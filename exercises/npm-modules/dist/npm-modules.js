@@ -136834,11 +136834,15 @@ var _waait2 = _interopRequireDefault(_waait);
 
 var _faker = require('faker');
 
-var _faker2 = _interopRequireDefault(_faker);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log(`Hey ${_faker2.default.name.firstName()}`);
+console.log(`Hey ${_faker.name.firstName()}`);
+
+const fakeNames = Array.from({ length: 10 }, () => {
+  return `${_faker.name.firstName()} ${_faker.name.lastName()}`;
+});
+console.log(fakeNames);
+
 async function go() {
   console.log('Going!');
   await (0, _waait2.default)(200);
