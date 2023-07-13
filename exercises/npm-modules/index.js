@@ -1,8 +1,8 @@
 import wait from 'waait';
 import { name } from 'faker';
 import { formatDistance, formatDistanceToNow, format } from 'date-fns';
-// import axios from 'axios';
-// const axios = require('axios').default;
+import axios from 'axios';
+import { intersection, isEqual } from 'lodash';
 
 console.log(`Hey ${name.firstName()}`);
 
@@ -41,13 +41,26 @@ console.log(diff);
 console.log(diff2);
 console.log(diff3);
 console.log(formatted);
-//
-// async function getJoke() {
-//   const res = await axios.get('https://icanhazdadjoke.com/', {
-//     headers: {
-//       Accept: 'application/json',
-//     },
-//   });
-//   console.log(res);
-// }
-// getJoke();
+
+async function getJoke() {
+  const { data: joke } = await axios.get('https://icanhazdadjoke.com/', {
+    headers: {
+      Accept: 'application/json',
+    },
+  });
+  console.log(joke);
+}
+getJoke();
+
+const a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const b = [2, 4, 6, 8, 10, 12, 14, 16];
+
+const sameValue = intersection(a, b);
+console.log(sameValue);
+
+const person1 = { name: 'wes' };
+const person2 = { name: 'wes' };
+
+console.log(person1 === person2); //cannot determine if the object data is the same, instead will look to see if theyu
+// are the same object which they are not
+console.log(isEqual(person1, person2)); //lodash allows you to see if the two objects are the same
