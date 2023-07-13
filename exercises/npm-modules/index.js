@@ -1,6 +1,8 @@
 import wait from 'waait';
 import { name } from 'faker';
 import { formatDistance, formatDistanceToNow, format } from 'date-fns';
+// import axios from 'axios';
+// const axios = require('axios').default;
 
 console.log(`Hey ${name.firstName()}`);
 
@@ -39,3 +41,13 @@ console.log(diff);
 console.log(diff2);
 console.log(diff3);
 console.log(formatted);
+//
+// async function getJoke() {
+//   const res = await axios.get('https://icanhazdadjoke.com/', {
+//     headers: {
+//       Accept: 'application/json',
+//     },
+//   });
+//   console.log(res);
+// }
+// getJoke();
