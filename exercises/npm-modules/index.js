@@ -1,5 +1,7 @@
 import wait from 'waait';
 import { name } from 'faker';
+import { formatDistance, formatDistanceToNow, format } from 'date-fns';
+
 console.log(`Hey ${name.firstName()}`);
 
 const fakeNames = Array.from({ length: 10 }, () => {
@@ -14,3 +16,26 @@ async function go() {
 }
 
 go();
+
+const diff = formatDistance(
+  new Date(1986, 3, 4, 11, 32, 0),
+  new Date(1986, 3, 4, 10, 32, 0),
+  { addSuffix: true }
+);
+
+const diff2 = formatDistance(new Date(), new Date(2024, 3, 4, 10, 32, 0), {
+  addSuffix: true,
+});
+
+const diff3 = formatDistanceToNow(new Date(2025, 0, 1, 0, 0, 15), {
+  includeSeconds: true,
+});
+
+const date = new Date();
+//In format of day, month, year
+
+const formatted = format(date, `do 'of' LLLL',' y`);
+console.log(diff);
+console.log(diff2);
+console.log(diff3);
+console.log(formatted);
