@@ -136900,7 +136900,7 @@ function _go() {
         case 0:
           console.log('Going!');
           _context.next = 3;
-          return (0, _waait.default)(200);
+          return (0, _waait.default)(2000);
         case 3:
           console.log('ending...');
         case 4:

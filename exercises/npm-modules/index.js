@@ -9,7 +9,7 @@ console.log(fakeNames);
 
 async function go() {
   console.log('Going!');
-  await wait(200);
+  await wait(2000);
   console.log('ending...');
 }
 
