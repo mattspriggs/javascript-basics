@@ -3,6 +3,7 @@ import { name } from 'faker';
 import { formatDistance, formatDistanceToNow, format } from 'date-fns';
 import axios from 'axios';
 import { intersection, isEqual } from 'lodash';
+import to from 'await-to-js';
 
 console.log(`Hey ${name.firstName()}`);
 
@@ -64,3 +65,23 @@ const person2 = { name: 'wes' };
 console.log(person1 === person2); //cannot determine if the object data is the same, instead will look to see if theyu
 // are the same object which they are not
 console.log(isEqual(person1, person2)); //lodash allows you to see if the two objects are the same
+
+function checkIfNameIsCool(firstName) {
+  return new Promise(function (resolve, reject) {
+    if (firstName === 'Matt') {
+      resolve('Cool name bro!');
+    }
+    reject(new Error('Not a cool name...'));
+  });
+}
+
+async function checkName() {
+  const [err, successValue] = await to(checkIfNameIsCool('Herbert'));
+  if (err) {
+    //deal with it
+    console.log(err);
+  } else {
+    console.log(successValue);
+  }
+}
+checkName();
